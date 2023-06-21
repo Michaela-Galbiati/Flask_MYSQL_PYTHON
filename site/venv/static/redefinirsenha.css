@@ -1,0 +1,167 @@
+@font-face {
+    font-family: titulo;
+    src: url(../static/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf) format(truetype);
+}
+
+body{
+    padding: 0px;
+    margin:0px;
+    overflow: hidden;
+    background-image: url(../static/Fundo2.png);
+    font-family: 'titulo',sans-serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+#fundoprinc{
+    height: 100%;
+    width: 100%;
+}
+input{
+    cursor: pointer;
+    font-family: 'titulo',sans-serif;
+    font-size: 1.5em;
+    border: none;
+    border-bottom: 2px solid  rgba(42, 32, 111, 0.836);
+    background-color:rgba(42, 32, 111, 0);
+    margin: 10px 10px 10px 10px;
+    height: 20px;
+    margin-top: 10px;
+    width: 350px;
+    padding: 5px;
+    color: rgb(0, 0, 0);
+}
+input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+::placeholder{
+    color:  rgb(42, 32, 111);
+    font-size: 23px;
+
+}
+#codigo1{
+    display: none;
+}
+#codigo2{
+    display: none;
+}
+#senhas{
+    display: none;
+}
+.botao{
+    background-color: rgba(42, 32, 111, 0.836);
+    padding: 20px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-family: 'titulo',sans-serif;
+    letter-spacing: 2px;
+    font-size: 18px;
+    margin: 10px 10px 10px 50px;
+    cursor: pointer;
+}
+.botao:hover{
+    background-color: #801f61;
+}
+.senha{
+    background-color: white;
+    border: none;
+    color: #801f61;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 50px;
+}
+#cadastro{
+    background-color: white;
+    width: 500px;
+    height: 500px;
+    margin-right: 150px;
+    margin-top: 150px;
+    border-radius: 20px;
+    position:absolute;
+    right: 0;
+    border: 2px solid #801f61;
+}
+h1{
+    color:  rgba(42, 32, 111, 0.836);
+    padding: 5px;
+    margin-top: -1px;
+}
+#log{
+    text-align: center;
+    margin: 0 auto;
+}
+#log:hover{
+    color:#801f61;
+}
+#cad{
+    cursor: pointer;
+}
+#cad:hover{
+    color: #801f61;
+}
+#header{
+    display: flex;
+    border-radius: 20px;
+}
+.icones{
+    width: 45px;
+    height: 45px;
+    margin: -10px;
+}
+.itens{
+    padding: 10px 20px 20px 40px;
+}
+.logotipo{
+    max-width: 350px;
+}
+#logot{
+    text-align: center;
+    margin: 25px 20px 20px 25px;
+}
+.redefinição{
+    color: #801f61;
+    text-align: center;
+}
+#telefone{
+    display: none;
+}
+.redefiniçãoroxo{
+    color: #801f61;
+    text-align: center;
+    color:  rgb(42, 32, 111);
+    padding: 10px;
+}
+@media (max-width: 700px) {
+    #cadastro{
+        width: 350px;
+        height: 500px;
+        margin-right: 30px;
+        margin-top: 150px;
+    }
+    .logotipo{
+        max-width: 300px;
+    }
+    h1{
+        font-size: 1.5em;
+    }
+    .icones{
+        width: 35px;
+        height: 35px;
+        margin: -10px;
+    }
+    .itens{
+        padding: 20px;
+    }
+    button{
+        padding: 10px;
+    }
+    input{
+        font-size: 1.3em;
+        margin: 20px 10px 20px 10px;
+        width: 250px;
+        padding: 5px;
+        color: rgb(0, 0, 0);
+    }
+}
