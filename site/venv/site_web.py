@@ -21,16 +21,17 @@ app.permanent_session_lifetime = timedelta(seconds=10)
 
 
 
-@app.route('/registroro')
+@app.route('/registroro', methods=['GET','POST'])
 def site_ro():
     if 'loggedinC' in session:
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM categorias, cadastrotamtec')
+        cur.execute('SELECT * FROM categorias, edital, cadastrotamtec')
         itens = cur.fetchall()
         print(itens)
         mysql.connection.commit()
-        return render_template('index.html', nome1=session['nome1'], categoria = itens, dataUserc = dataPerfilUsuarioC(), inforLoginc = dataLoginSesionC())
+        return render_template('index.html', nome1=session['nome1'], categoria = itens, editais=itens, dataUserc = dataPerfilUsuarioC(), inforLoginc = dataLoginSesionC())
     return render_template("logincliente.html")
+
 
 @app.route('/categoria')
 def categoria():
@@ -41,6 +42,17 @@ def categoria():
         print(itens)
         mysql.connection.commit()
     return render_template('index.html', categoria = itens)
+
+@app.route('/status')
+def status():
+    if request.method == 'POST':
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM status')
+        itens = cur.fetchall()
+        print(itens)
+        mysql.connection.commit()
+    return render_template('index.html', statuss = itens)
+
 
 
 @app.route('/logout') 
@@ -129,15 +141,17 @@ def adicionar_registroro():
         nomeprojprinc=request.form['nomeprojprinc']
         CNPJprinc=request.form['CNPJprinc']
         unidadeprinc=request.form['unidadeprinc']
+        decisão=request.form['decisão']
+        métricas=request.form['métricas']
         observaçãoprinc=request.form['observaçãoprinc']
-        produtos = request.form['produtos']
+        status = request.form['status']
+        editalpubli = request.form['editalpubli']
+        vendedor = request.form['vendedor']
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO cadastroro (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, observaçãoprinc, produtos) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, observaçãoprinc, produtos))
+        cur.execute('INSERT INTO cadastroro (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, status, observaçãoprinc, editalpubli, vendedor) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, status, observaçãoprinc, editalpubli, vendedor))
         mysql.connection.commit()
         flash('RO adicionado com sucesso!')
         return redirect (url_for('site_ro'))
-
-
 
 
 
@@ -237,6 +251,7 @@ def dataLoginSesion():
             session.permanent = True
         return inforLogin
 
+
 def dataLoginSesionC():
     if request.method == 'POST' and 'email' in request.form and 'senha' in request.form and 'nome1' in request.form and 'telefone1' in request.form:
         id = request.form['id'] 
@@ -277,9 +292,11 @@ def dataPerfilUsuarioC():
 def site_cadastrotamtec():
     return render_template("cadastrotamtec.html")
 
+
 @app.route('/codigo', methods=['GET', 'POST'])
 def site_codigo():
     return render_template("código.html")
+
 
 @app.route('/cadastro', methods=['GET', 'POST'])
 def site_cadastro():
@@ -304,7 +321,6 @@ def site_delete(id):
 @app.route('/deleteacesso', methods=['POST'])
 def deleteacesso():
     if request.method == 'POST' and'loggedinC' in session:
-       
         cur = mysql.connection.cursor()
         cur.execute("DELETE FROM cadastrotamtec WHERE id = {0}".format(session['id']))
         mysql.connection.commit()
@@ -329,15 +345,12 @@ def deleteacessott():
         return render_template('login.html', msg=msg)
 
 
-
 @app.route('/edit/<id>')
 def site_edit(id):
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM cadastroro WHERE id = {0}'.format(id))
     data = cur.fetchall()
     return render_template('editarro.html', cadastroro = data[0])
-
-
 
 
 @app.route('/update/<id>', methods=['POST'])
@@ -404,6 +417,7 @@ def site_updatedadoscliente():
         msg ='Dados não atualizados'
         return render_template('logincliente.html', msg=msg) 
     
+    
 @app.route('/alterar/<id>')
 def site_alterar(id):
     cur = mysql.connection.cursor()
@@ -416,6 +430,7 @@ def site_alterar(id):
 def site_senha():
     return render_template("senha.html")
 
+
 @app.route('/redefinirsenha')
 def site_redsenha():
     return render_template("redefinirsenha.html")
@@ -425,9 +440,12 @@ def site_redsenha():
 def site_forgotsenha():
     return render_template("forgotpassword.html")
 
+
 @app.route('/finalizar')
 def site_finalizar():
     return render_template("adicionarro.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    with app.app_context():
+        mysql.create_all()
+        app.run(debug=True)

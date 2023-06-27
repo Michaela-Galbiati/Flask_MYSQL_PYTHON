@@ -14,6 +14,7 @@
     <title>Usuário</title>
 </head>
 <body>
+    
     <div>
         <div id="header">
             <div>
@@ -22,7 +23,11 @@
             <div class="menu">
                 <h1><a class="registro" href="registroro">Registro de clientes</a></h1>
             </div>
-
+            <form action="deleteacessott" method="POST">
+                <div>
+                    <button style="color:rgb(255, 255, 255)" onclick="cadastro()">Deletar conta</button>
+                </div>
+            </form>
         </div>
         <div id="minhaconta">
             <h2>
@@ -40,15 +45,20 @@
                         </div>
                     </div>
              </div>
-            <button type="submit">Alterar dados</button>
+             <button type="submit" >Alterar dados</button>
         </form>
-        <form action="deleteacessott" method="POST">
-            <div>
-                <button style="color:rgb(255, 255, 255)">Deletar</button>
-            </div>
-        </form>
+        
         </div>
     </div>
+
+<script>
+    function cadastro(){
+        if (window.confirm('If you click "ok" you would be redirected . Cancel will load this website ')) 
+{
+        window.location.href='https://www.google.com/chrome/browser/index.html';
+};
+    }
+</script>
 <script>
     $(document).ready(function(){
  

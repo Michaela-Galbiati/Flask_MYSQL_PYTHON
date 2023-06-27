@@ -44,6 +44,18 @@ body{
 #adicionar2{
     display: none;
 }
+#pesquisar{
+    background-color: rgba(42, 32, 111, 0.836);
+    padding: 5px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-family: 'titulo',sans-serif;
+    letter-spacing: 0px;
+    font-size: 15px;
+    margin: 10px;
+    cursor: pointer;
+}
 .login{
     color:rgb(127, 30, 97);
     right: 0;

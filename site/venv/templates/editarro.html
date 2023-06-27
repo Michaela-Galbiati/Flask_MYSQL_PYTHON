@@ -111,7 +111,17 @@
             <div id="outros">
                 <h2>Descrição</h2>
                 <div class="itens">
-                    <br><textarea disabled="" class="block" name="observaçãoprinc" id="observação" placeholder="Ex: Esta oportunidade visa o atendimento ás necessidades da (Tamandaré Informática LTDA), possibilitando a (aquisição / locação) de equipamentos do tipo (desktop/ servidores / softwares) para a (renovação do parquer tecnológico / criação de um novo ambiente), para melhor suprir as necessidades do cliente." value="{{cadastroro.16}}"></textarea>
+                    <label for="">Qual o problema de negócio que o cliente tem, e busca resolver com a solução Lenovo? Qual o tipo de compra a ser realizada? Compra direta, adesão, edital e outros?</label>
+                    <br><textarea disabled="" class="block" name="observaçãoprinc" id="observação" placeholder="Ex: Esta oportunidade visa o atendimento ás necessidades da (Tamandaré Informática LTDA), possibilitando a (aquisição / locação) de equipamentos do tipo (desktop/ servidores / softwares) para a (renovação do parquer tecnológico / criação de um novo ambiente), para melhor suprir as necessidades do cliente." value="{{cadastroro.21}}"></textarea>
+                </div>
+                <div class="itens">
+                    <label for="">Qual será o critério de decisão que o cliente irá utilizar?</label>
+                    <br><textarea name="decisão" id="observação" autocomplete="off" value="Melhor atendimento das especificações técnicas fornecidas pelo cliente." value="{{cadastroro.17}}">Melhor atendimento das especificações técnicas fornecidas pelo cliente.</textarea>
+                </div>
+                <div class="itens">
+                    <label for="">Quais são as métricas que serão usadas pelo cliente para definir compra?</label>
+            
+                    <br><textarea name="métricas" id="observação" autocomplete="off" value="Melhor atendimento das especificações técnicas fornecidas pelo cliente." value="{{cadastroro.18}}">Melhor atendimento das especificações técnicas fornecidas pelo cliente.</textarea>
                 </div>
                 <form action="/upload" method="POST">
                     <div class="itens">

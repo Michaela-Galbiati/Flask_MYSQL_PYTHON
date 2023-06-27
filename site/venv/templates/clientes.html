@@ -31,26 +31,28 @@
             <div id="clientes">
                 <h1 id="cliente">Registros de Cliente</h1>
                 <div id="partes" class="draggable">
-                    <div id="p1">
+                    <div class="p0" id="p1">
                         <h5 class="title">Solicitação</h5>
                         {% for cadastroro in cadastroros %}
-                            <p> {{cadastroro.18}}</p>
+                            <a class="cadalink" href="/edit/{{cadastroro.18}}"><p> {{cadastroro.22}}</p></a>
                         {% endfor %}
                     </div>
-                    <div>
+                    <div class="p0">
                         <h5 class="title">Orgão</h5>
                         {% for cadastroro in cadastroros %}
-                            <p> {{cadastroro.10}}</p>   
+                            <a class="cadalink" href="/edit/{{cadastroro.18}}"><p> {{cadastroro.10}}</p> </a>
                         {% endfor %}
                     </div>
-                    <div>
+                    <div class="p0">
                         <h5 class="title">Vendedor</h5>
-                        <p class="resp"></p>
+                        {% for cadastroro in cadastroros %}
+                            <p> {{cadastroro.23}}</p>
+                        {% endfor %}
                     </div>
                     <div>
                         <h5 class="title">Nome do Projeto</h5>
                         {% for cadastroro in cadastroros %}
-                            <p> {{cadastroro.11}}</p>   
+                            <a class="cadalink" href="/edit/{{cadastroro.18}}"><p> {{cadastroro.11}}</p></a>
                         {% endfor %}
                     </div>
                     <div>
@@ -69,9 +71,9 @@
                     <div>
                         <h5 class="title">Etapas</h5>
                         {% for cadastroro in cadastroros %}
-                            <div><a class="link" href="/edit/{{cadastroro.18}}">Editar</a></div>
+                            <div><a class="link" href="/edit/{{cadastroro.19}}">Editar</a></div>
                             <div style="margin-top: 10px; margin-bottom: 20px;"></div>
-                            <div style="display: none;"><a href="/delete/{{cadastroro.18}}">Deletar</a></div>      
+                            <div style="display: none;"><a href="/delete/{{cadastroro.19}}">Deletar</a></div>      
                         {% endfor %}
                     </div>
                 

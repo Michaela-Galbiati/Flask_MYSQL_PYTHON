@@ -36,10 +36,10 @@ body{
     overflow: scroll;
     display: flex; 
     justify-content: center;
-    min-width: 400px;
+    min-width: 300px;
 }
 #p1{
-    padding-left: 600px;
+    padding-left: 0px;
 }
 .login{
     color:rgb(127, 30, 97);
@@ -170,6 +170,13 @@ option{
     border: 2px solid #801f61;
     border-radius: 20px;
 }
+.cadalink{
+    color: black;
+    text-decoration: none;
+}
+.cadalink:link{
+    color:#000000;
+}
 button{
     background-color: rgba(42, 32, 111, 0.836);
     padding: 20px;
@@ -189,8 +196,37 @@ button:hover{
 #status{
     margin-top: 50px;
 }
+@media (max-width:1100px) {
+    h1{
+        font-size: 1em;
+    }
+    #p1{
+        padding-left: 600px;
+    }
+    .title{
+        font-size: 1em;
+    }
+}
 @media (max-width:700px) {
     h1{
         font-size: 1em;
+    }
+    #p1{
+        padding-left: 950px;
+    }
+    .title{
+        font-size: 1em;
+    }
+}
+@media (min-width:1250px) {
+    
+    #p1{
+        padding-left: 10px;
+    }
+}
+@media (min-width:1000px) {
+   
+    #p1{
+        padding-left: 0px;
     }
 }
