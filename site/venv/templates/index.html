@@ -50,6 +50,7 @@
                     <div id="dadospessoais">
                         <h2>Dados do cliente</h2>
                         <div class="itens">
+                            <label for="nome">Vendedor</label>
                             <input required type="text" name="vendedor" placeholder="Vendedor"  autocomplete="off" value="{{nome1}}">
                         </div>
                         <div class="itens">
@@ -118,7 +119,7 @@
                         <div class="itens">
                             <label for="CNPJ"><img class="icones" src="../static/cnpj.png" alt=""></label>
                             <input minlength="14" maxlength="14" required type="text" name="CNPJprinc"  placeholder="*CNPJ - somente números" class="cpf-cnpj" maxlength="14" onkeypress="$(this).mask('00.000.000/0000-00')" autocomplete="off" id="cnpj">
-                            <br><button id="pesquisar" type="button" name="pesqui" value="Pesquisar">Pesquisar</button>
+                            <br><button id="pesquisar" type="button" name="pesqui" required value="Pesquisar">Pesquisar</button>
                             <br><label for="razao">Razão social</label><br/>
                             <input id="razao" type="text" name="razao" size="35" maxlength="50"><br/><br/>
                         </div>
@@ -132,7 +133,7 @@
                     <h2>Descrição</h2>
                     <div class="itens">
                         <label for="">Qual o problema de negócio que o cliente tem, e busca resolver com a solução Lenovo? Qual o tipo de compra a ser realizada? Compra direta, adesão, edital e outros?</label>
-                        <br><textarea name="observaçãoprinc" id="observação" placeholder="Ex: Esta oportunidade visa o atendimento ás necessidades da (Tamandaré Informática LTDA), possibilitando a (aquisição / locação) de equipamentos do tipo (desktop/ servidores / softwares) para a (renovação do parquer tecnológico / criação de um novo ambiente), para melhor suprir as necessidades do cliente." autocomplete="off"></textarea>
+                        <br><textarea required name="observaçãoprinc" id="observação" placeholder="Ex: Esta oportunidade visa o atendimento ás necessidades da (Tamandaré Informática LTDA), possibilitando a (aquisição / locação) de equipamentos do tipo (desktop/ servidores / softwares) para a (renovação do parquer tecnológico / criação de um novo ambiente), para melhor suprir as necessidades do cliente." autocomplete="off"></textarea>
                     </div>
                     <div class="itens">
                         <label for="">Qual será o critério de decisão que o cliente irá utilizar?</label>
@@ -143,15 +144,13 @@
                 
                         <br><textarea name="métricas" id="observação" autocomplete="off" value="Melhor atendimento das especificações técnicas fornecidas pelo cliente.">Melhor atendimento das especificações técnicas fornecidas pelo cliente.</textarea>
                     </div>
-                    <div class="itens">
-                        <label for="edital">Edital publicado?</label>
-                        <select name="editalpubli" id="">
-                            <option value="">Escolha</option>
-                            {% for edital in editais %}
-                                <option value="{{edital.1}}">{{edital.1}}</option>
-                            {% endfor %}
-                        </select>  
-                    </div>
+                    <label for="">Edital publicado?</label>
+                    <select name="editalpubli" id="">
+                        <option value="">Escolha</option>
+                        {% for edital in editals %}
+                            <option value="{{edital.1}}">{{edital.1}}</option>
+                        {% endfor %}
+                    </select> 
                     <div class="itens">
                         <label for="arquivo"><img class="icones" src="../static/arquivo.png" alt=""></label>
                         <input class="fileimg"  type="file" name="arquivoprinc" id="arquivo" placeholder="Arquivo">
@@ -161,9 +160,30 @@
                     </div>
                     
                 </div>
-                    
-                    <div style="display: none;">
+                 <div style="display: none;">
+   
+                    <div >
+                       <div>
+                        <div>
+                            <label for="">Produtos</label>
+                            <input type="checkbox" name="produtos" value="Notebook" > Notebook<br>
+                            <input type="checkbox" name="produtos" value="Desktop">Desktop <br>
+                            <input type="checkbox" name="produtos" value="Servidor" > Servidor<br>
+                            <input type="checkbox" name="produtos" value="Monitor">Monitor <br>
+                            <input type="checkbox" name="produtos" value="Storage">Storage<br>
+                            <input type="checkbox" name="produtos" value="Switch" > Switch<br>
+                            <input type="checkbox" name="produtos" value="Hiperconvergência" > Hiperconvergência<br>
+                            <input type="checkbox" name="produtos" value="Software" > Software<br>
+                            <input type="checkbox" name="produtos" value="Videowall" >Videowall<br>
+                            <input type="checkbox" name="produtos" value="Outros" >Outros<br>
+                            <input type="checkbox" name="produtos" value="Workstation" > Workstation<br>
+                       </div>
+                       </div>
                         <div id="prod">
+                            <div class="itens">
+                                <label for="nome">Responsável</label>
+                                <input type="text" name="responsavel" placeholder="Responsável"  autocomplete="off">
+                            </div>
                             <h2 style="color: rgba(42, 32, 111, 0.877)">Produtos</h2>
                             <div id="produto">
                                 <div class="itens">
@@ -189,11 +209,11 @@
                             </div>
                             <div class="itens">
                                 <label for="quant">N° RO</label>
-                                <input type="text" name="numero" autocomplete="off">
+                                <input type="text" name="nro" autocomplete="off">
                             </div>
                             <div class="itens">
                                 <label for="quant">Status</label>
-                                <input type="text" name="status" autocomplete="off">
+                                <input type="text" name="statusro" autocomplete="off">
                             </div>
                             <div class="itens">
                                 <label for="quant">Brand</label>
@@ -201,7 +221,7 @@
                             </div>
                            </div>
                             <div class="itens">
-                                <br><textarea  name="obs" id="observação" placeholder="Observação" autocomplete="off"></textarea>
+                                <br><textarea  name="obs" id="obsfinal" placeholder="Observação" autocomplete="off"></textarea>
                             </div>
                             <div id="adicionarinf">
                                 <img id="add" src="../static/add.png" alt="">
@@ -209,27 +229,28 @@
                             <div id="caixasmais" style="display: none;">
                                 <div class="itens">
                                     <label for="quant">N° RO</label>
-                                    <input type="text" name="numero" autocomplete="off">
+                                    <input type="text" name="nro2" autocomplete="off">
                                 </div>
                                 <div class="itens">
                                     <label for="quant">Status</label>
-                                    <input type="text" name="status" autocomplete="off">
+                                    <input type="text" name="statusro2" autocomplete="off">
                                 </div>
                                 <div class="itens">
                                     <label for="quant">Brand</label>
-                                    <input type="text" name="brand" autocomplete="off">
+                                    <input type="text" name="brand2" autocomplete="off">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                 </div>
         </Form>
         </div>
         <div id="logot">
             <img class="logotipo" src="../static/logotipo.png" alt="">
         </div>
     </div>
-
 
     <script>
             $("#addi").click(function(){

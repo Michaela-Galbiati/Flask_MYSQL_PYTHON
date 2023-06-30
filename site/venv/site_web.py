@@ -25,12 +25,12 @@ app.permanent_session_lifetime = timedelta(seconds=10)
 def site_ro():
     if 'loggedinC' in session:
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM categorias, edital, cadastrotamtec')
+        cur.execute('SELECT * FROM edital')
         itens = cur.fetchall()
-        print(itens)
         mysql.connection.commit()
-        return render_template('index.html', nome1=session['nome1'], categoria = itens, editais=itens, dataUserc = dataPerfilUsuarioC(), inforLoginc = dataLoginSesionC())
+        return render_template('index.html', nome1=session['nome1'], editals = itens, dataUserc = dataPerfilUsuarioC(), inforLoginc = dataLoginSesionC())
     return render_template("logincliente.html")
+
 
 
 @app.route('/categoria')
@@ -43,6 +43,20 @@ def categoria():
         mysql.connection.commit()
     return render_template('index.html', categoria = itens)
 
+
+@app.route('/final', methods=['GET','POST'] )
+def final():
+    if request.method == 'POST':
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM final')
+        itens = cur.fetchall()
+        print(itens)
+        mysql.connection.commit()
+    return render_template('index.html', finals = itens)
+
+
+
+
 @app.route('/status')
 def status():
     if request.method == 'POST':
@@ -52,7 +66,6 @@ def status():
         print(itens)
         mysql.connection.commit()
     return render_template('index.html', statuss = itens)
-
 
 
 @app.route('/logout') 
@@ -144,11 +157,10 @@ def adicionar_registroro():
         decisão=request.form['decisão']
         métricas=request.form['métricas']
         observaçãoprinc=request.form['observaçãoprinc']
-        status = request.form['status']
         editalpubli = request.form['editalpubli']
         vendedor = request.form['vendedor']
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO cadastroro (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, status, observaçãoprinc, editalpubli, vendedor) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, status, observaçãoprinc, editalpubli, vendedor))
+        cur.execute('INSERT INTO cadastroro (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, observaçãoprinc, editalpubli, vendedor) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, observaçãoprinc, editalpubli, vendedor))
         mysql.connection.commit()
         flash('RO adicionado com sucesso!')
         return redirect (url_for('site_ro'))
@@ -308,6 +320,7 @@ def site_cadastro():
     return render_template("cadastro.html", setors = itens)
 
 
+
 @app.route('/delete/<string:id>')
 def site_delete(id):
     cur = mysql.connection.cursor()
@@ -353,18 +366,64 @@ def site_edit(id):
     return render_template('editarro.html', cadastroro = data[0])
 
 
+@app.route('/pdf/<id>')
+def site_pdf(id):
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM cadastroro WHERE id = {0}'.format(id))
+    data = cur.fetchall()
+    return render_template('pdfro.html', cadastroro = data[0])
+
+
+
 @app.route('/update/<id>', methods=['POST'])
 def site_update(id):
     if request.method == 'POST':
         modelo = request.form['modelo']
         quantidade = request.form['quantidade']
+        status = request.form['status']
+        
+    
         cur = mysql.connection.cursor()
         cur.execute("""
             UPDATE cadastroro
             SET modelo = %s,
-                quantidade = %s
+                quantidade = %s,
+                status = %s
             WHERE id = %s
-        """, (modelo, quantidade, id))
+        """, (modelo, quantidade, status, id))
+        mysql.connection.commit()
+        msg ='Dados atualizados'
+        return redirect(url_for('site_cliente', msg=msg))
+    
+    
+@app.route('/updatefinal/<id>', methods=['POST'])
+def site_updatefinal(id):
+    if request.method == 'POST':
+        data = request.form['data']
+        nro = request.form['nro']
+        nro2 = request.form['nro2']
+        statusro = request.form['statusro']
+        statusro2 = request.form['statusro2']
+        brand = request.form['brand']
+        brand2 = request.form['brand2']
+        obsfinal = request.form['obsfinal']
+        responsavel = request.form['responsavel']
+        
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            UPDATE cadastroro
+            SET data = % s,
+                nro = % s,
+                nro2 = % s,
+                statusro = % s,
+                statusro2 = % s,
+                brand = % s,
+                brand2 = % s,
+                obsfinal = % s,
+                responsavel = % s
+                
+            WHERE id = %s
+        """, (data, nro, nro2, statusro, statusro2, brand, brand2, obsfinal, responsavel, id))
         mysql.connection.commit()
         msg ='Dados atualizados'
         return redirect(url_for('site_cliente', msg=msg))

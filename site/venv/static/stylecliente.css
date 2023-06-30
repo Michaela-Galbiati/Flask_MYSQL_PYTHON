@@ -45,7 +45,7 @@ body{
     color:rgb(127, 30, 97);
     right: 0;
     margin: 5px;
-    font-size: 1.6em;
+    font-size: 1.3em;
     cursor: pointer;
 }
 .indicação{
@@ -151,7 +151,7 @@ option{
     padding: 10px;
     border-radius: 10px;
     margin: 40px;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 .opção{
     margin-top: 40px;

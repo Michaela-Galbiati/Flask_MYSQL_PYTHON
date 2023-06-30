@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styledit.css">
+    <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon">
+    <script src="../static/jquery-3.7.0.js"></script>
+    <title>Editar</title>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; margin: 10px;">
+        <a href="http://www.tamtec.com.br/"><img class="logologin" src="../static/logo.png" alt=""></a>
+        
+        <a href="acesso"><h3 class="login">RO</h3></a>
+    
+    </div>
+    <div>
+        {% with messages = get_flashed_messages()%}
+        {% if messages%}
+        {% for message in messages %}
+        <p class="mensagem">{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div id="registroro">
+        <Form class="formulário" action="/" method="POST" >
+        <div id="cliente">
+            <h1>RO finalizado</h1>
+        </div>
+        <div style="padding-top: 10px;">
+            
+            <div class="itens">
+                <label for="nome">Vendedor</label>
+                <br><p required type="text" name="vendedor" value="{{cadastroro.23}}">{{cadastroro.23}}</p>
+            </div>
+            <div class="itens">
+                <label for="nome">Responsável</label>
+                <br><p required type="text" name="responsavel" autocomplete="off" value="{{cadastroro.24}}">
+            </div>
+            <div class="itens">
+                <label for="nome">Dados pessoais</label>
+                <p disabled="" class="block" type="text" name="nomeprinc" placeholder="*Nome" value="{{cadastroro.0}}">{{cadastroro.0}}, {{cadastroro.1}}, {{cadastroro.2}}, {{cadastroro.3}}</p>
+            </div>
+            
+            <div id="addi">
+                <img id="add" src="../static/add.png" alt="">
+            </div>
+            <div id="adicionar">
+                <div class="itens">
+                    <label for="nome1">Secundário</label>
+                    <P disabled="" class="block" type="text" name="nome1princ"  placeholder="Nome" value="{{cadastroro.4}}">{{cadastroro.4}}, {{cadastroro.5}}, {{cadastroro.6}}</p>
+                </div>
+                <div id="addi2">
+                    <img id="add2" src="../static/add2.png" alt="">
+                </div>
+            </div>
+            
+            <div id="adicionar2">
+                <div class="itens">
+                    <label for="nome2">Terciário</label>
+                    <P disabled="" class="block" type="text" name="nome2princ" id="nome2" placeholder="Nome" value="{{cadastroro.7}}">{{cadastroro.7}}, {{cadastroro.8}}, {{cadastroro.9}}</p>
+                </div>
+            </div>
+            <div class="itens">
+                <label for="rs">Informações da unidade</label>
+                <P disabled="" class="block" type="text" name="rsprinc"  placeholder="*Razão Social" value="{{cadastroro.10}}">{{cadastroro.10}}, {{cadastroro.11}}, {{cadastroro.12}}, {{cadastroro.13}}</p>
+            </div>
+            <div class="itens">
+                <label class="perguntas" for="">Qual o problema de negócio que o cliente tem, e busca resolver com a solução Lenovo? Qual o tipo de compra a ser realizada? Compra direta, adesão, edital e outros?</label>
+                <br><p disabled="" class="block" name="observaçãoprinc" id="observação" placeholder="Ex: Esta oportunidade visa o atendimento ás necessidades da (Tamandaré Informática LTDA), possibilitando a (aquisição / locação) de equipamentos do tipo (desktop/ servidores / softwares) para a (renovação do parquer tecnológico / criação de um novo ambiente), para melhor suprir as necessidades do cliente." value="{{cadastroro.21}}">{{cadastroro.21}}</p>
+            </div>
+            <div class="itens">
+                <label class="perguntas" for="">Qual será o critério de decisão que o cliente irá utilizar?</label>
+                <br><p disabled="" class="block" name="decisão" id="observação" autocomplete="off" value="Melhor atendimento das especificações técnicas fornecidas pelo cliente." value="{{cadastroro.17}}">Melhor atendimento das especificações técnicas fornecidas pelo cliente.</p>
+            </div>
+            <div class="itens">
+                <label class="perguntas" for="">Quais são as métricas que serão usadas pelo cliente para definir compra?</label>
+        
+                <br><p disabled="" class="block" name="métricas" id="observação" autocomplete="off" value="Melhor atendimento das especificações técnicas fornecidas pelo cliente." value="{{cadastroro.18}}">Melhor atendimento das especificações técnicas fornecidas pelo cliente.</p>
+            </div>
+            <form action="/upload" method="POST">
+                <div class="itens">
+                    <label for="arquivo"><img class="icones" src="../static/arquivo.png" alt=""></label>
+                    <input disabled=""  class="block" class="fileimg"  type="file" name="arquivoprinc" id="arquivo" placeholder="Arquivo">
+                </div>
+                <div class="itens">
+                    <label for="produtos">Equipamentos</label>
+                    <p style="color: black; font-size: 1.7em;" name="produtos" id="prod" value="{{cadastroro.14}}">{{cadastroro.14}}, {{cadastroro.16}}, {{cadastroro.15}} 
+                    </p>
+                </div>
+                <div class="itens">
+                    <label for="quant">Descrição-RO</label>
+                    <P type="date" name="data">{{cadastroro.25}}, {{cadastroro.26}}, {{cadastroro.27}}, {{cadastroro.28}}, {{cadastroro.29}}, {{cadastroro.21}}
+                    </p>
+                </div>
+                <div id="adicionarinf">
+                    <img id="add" src="../static/add.png" alt="">
+                </div>
+                <div id="caixasmais" style="display: none;">
+                    <div class="itens">
+                        <label for="quant">Segunda descrição</label>
+                        <P type="text" name="nro2">{{cadastroro.30}}, {{cadastroro.31}}, {{cadastroro.32}}
+                        </p>
+                    </div>
+                    
+                </div>
+        
+        </div>
+                        
+        </Form>
+    </div>
+
+    <script>
+        $("#addi").click(function(){
+            $("#adicionar").slideToggle()
+
+        });
+        $("#adicionarinf").click(function(){
+            $("#caixasmais").slideToggle()
+
+        });
+        $("#addi2").click(function(){
+            $("#adicionar2").slideToggle()
+
+        });
+    </script>
+</body>
+</html>
