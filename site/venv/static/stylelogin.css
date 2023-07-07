@@ -7,7 +7,7 @@ body{
     padding: 0px;
     margin:0px;
     overflow: hidden;
-    background-image: url(../static/Fundo2.png);
+    background-image: url(../static/fundobl.png);
     font-family: 'titulo',sans-serif;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -16,6 +16,13 @@ body{
 #fundoprinc{
     height: 100%;
     width: 100%;
+}
+#login1{
+    background-color: #ffffff;
+    margin: 60px 50px 50px 120px;
+    position: absolute;
+    text-align: center;
+    border-radius: 15px;
 }
 a{
     text-decoration: none;
@@ -26,7 +33,6 @@ a:link{
 }
 .registro{
     padding: 10px;
-    background-color: white;
     border-radius: 20px;
     margin: 5px;
 }
@@ -82,15 +88,12 @@ input:focus {
     margin-right: 50px;
 }
 #cadastro{
-    background-color: white;
-    width: 500px;
-    height: 500px;
-    margin-right: 150px;
+    background-image: linear-gradient( #801f61, rgba(42, 32, 111, 0.836));
+    width: 700px;
+    height: 550px;
+    border-radius: 5px;
+    margin: 0 auto;
     margin-top: 150px;
-    border-radius: 20px;
-    position:absolute;
-    right: 0;
-    border: 2px solid #801f61;
 }
 .redefiniçãoroxo{
     color: #801f61;
@@ -133,14 +136,22 @@ h1{
 }
 #logot{
     text-align: center;
-    margin: 25px 20px 20px 25px;
 }
 @media (max-width: 700px) {
+    #login1{
+        background-color: #ffffff;
+        margin-left:-190px;
+        position: absolute;
+        text-align: center;
+        border-radius: 15px;
+        border: 15px solid transparent;
+        border-image: linear-gradient(to right,#801f61, rgba(42, 32, 111, 0.836));
+        border-image-slice: 1;
+    }
+
     #cadastro{
-        width: 350px;
-        height: 500px;
-        margin-right: 30px;
-        margin-top: 150px;
+        width: 0px;
+        height: 0px;
     }
     .logotipo{
         max-width: 300px;

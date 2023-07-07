@@ -2,7 +2,7 @@ body{
     padding: 0px;
     margin:0px;
     overflow-X: hidden;
-    background-image: url(../static/Fundo2.png);
+    background-image: url(../static/fundobl.png);
     font-family: 'titulo',sans-serif;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -22,26 +22,18 @@ body{
     height: 40px;
     margin: 10px;
 }
-.menu{
-    color: #ffffff;
-    background-color: rgba(42, 32, 111, 0.897);
-    border-radius: 20px;
-    margin: 5px;
-}
-.menu:hover{
-    background-color: #801f61;
-}
 h1{
     font-size: 1.2em;
     margin: 20px;
     color: #ffffff;
 }
 h2{
-    color: #801f61;
+    color: #ffffff;
 }
 .registro{
     text-decoration: none;
-    color: #ffffff;
+    color: rgba(42, 32, 111, 0.836);
+    font-size: 1.2em;
 }
 .senha{
     text-decoration: none;
@@ -76,16 +68,19 @@ input:focus {
     outline: 0;
 }
 #dados{
-    text-align: center;
+    background-color: white;
+    border-radius: 10px;
 }
 #minhaconta{
+    height: 500px;
+    width: 700px;
+    text-align: center;
+    background-image: linear-gradient(rgb(65, 25, 139),#801f61);
     background-color: white;
-    width: 450px;
     text-align: center;
     margin: 0 auto;
     padding: 20px;
     margin-top: 50px;
-    border: 2px solid #801f61;
     border-radius: 20px;
 }
 button{

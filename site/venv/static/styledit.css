@@ -70,6 +70,10 @@ body{
     border-radius: 0px 20px 20px 20px;
     width: 100%;
 }
+.req{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 #registroro{
     margin: 0;
     padding: 40px 100px 0px 100px;
@@ -106,14 +110,8 @@ input, textarea{
     margin: 10px 10px 20px 10px;
     height: 20px;
     margin-top: 10px;
-    width: 300px;
     padding: 5px;
     color: rgb(0, 0, 0);
-}
-.status{
-    height: 20px;
-    margin: 0px;
-    padding: 0px;
 }
 .fileimg{
     font-size: 1em;
@@ -216,7 +214,7 @@ h2{
     grid-template-columns: 1fr 1fr;
 }
 .prod{
-    margin: 10px;;
+    margin: 10px;
     margin: 10px;
     padding: 5px;
     border-radius: 20px;
@@ -224,9 +222,22 @@ h2{
     margin: auto;
 
 }
+#abrir{
+    background-color: #801f61;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+#abrir1{
+    background-color: #801f61;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+
+}
 .opç{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
 }
 #final{
     margin: 10px;
@@ -358,6 +369,10 @@ button:hover{
         margin: 0;
         padding: 40px 25px 0px 0px;
     
+    }
+    .req{
+        display: grid;
+        grid-template-columns: 1fr;
     }
 }
 

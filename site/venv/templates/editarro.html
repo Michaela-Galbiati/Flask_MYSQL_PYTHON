@@ -126,6 +126,11 @@
             
                     <br><textarea disabled="" class="block" name="métricas" id="observação" autocomplete="off" value="Melhor atendimento das especificações técnicas fornecidas pelo cliente." value="{{cadastroro.18}}">Melhor atendimento das especificações técnicas fornecidas pelo cliente.</textarea>
                 </div>
+                <div class="itens">
+                    <label for="produtos">Edital publicado?</label>
+                    <p style="color: black; font-size: 1.7em;" name="edital" id="prod" value="{{cadastroro.20}}">{{cadastroro.20}}
+                    </p>
+                </div>
                 <form action="/upload" method="POST">
                     <div class="itens">
                         <label for="arquivo"><img class="icones" src="../static/arquivo.png" alt=""></label>
@@ -137,44 +142,110 @@
                 <div class="prod">
                     <h2 style="color: rgba(42, 32, 111, 0.877)">Produtos</h2>
                     <div id="produto">
-                        <div class="itens">
-                            <label for="produtos">Produto:</label>
-                            
-                            <p style="color: black; font-size: 1.7em;" name="produtos" id="prod" value="{{cadastroro.14}}">{{cadastroro.14}}
-                            </p>
+                        <div>
+                            <h3>Produto 1</h3>
+                            <img src="../static/computador (1).png" alt="" alt="" style="width: 150px;">
+                            <div>
+                                <h4 id="equi1">Equipamento </h4>
+                                    <input type="text" name="equipamento1" value="{{cadastroro.34}}" > 
+                                <div style="margin-top: 20px;"></div>
+                                <label for="">Quantidade</label>
+                                <br><input type="text" name="quantidade1" id="" value="{{cadastroro.35}}">
+                                <br><label for="" style="margin-top: 10px;">Modelo</label>
+                                <br><input type="text" name="modelo1" id="" value="{{cadastroro.36}}">
+                            </div>
                         </div>
-                        <div class="itens">
-                            <label for="mod">Modelo/Descrição</label>
-                            <input type="text" name="modelo" id="mod" value="{{cadastroro.15}}">
+                        <div>
+                            <h3>Produto 2</h3>
+                            <img src="../static/cpu.png" alt="" alt="" style="width: 150px;">
+                            <div>
+                                <h4 id="equi2">Equipamento</h4>
+                                    <input type="text" name="equipamento2" value="{{cadastroro.37}}" >
+                                <div style="margin-top: 20px;"></div>
+                                <label for="">Quantidade</label>
+                                <br><input type="text" name="quantidade2" id="" value="{{cadastroro.38}}">
+                                <br><label for="">Modelo</label>
+                                <br><input type="text" name="modelo2" id="" value="{{cadastroro.39}}">
+                            </div>
                         </div>
-                        <div class="itens">
-                            <label for="quant">Quantidade</label>
-                            <input type="number" name="quantidade" id="quant" value="{{cadastroro.16}}">
+                        <div>
+                            <h3>Produto 3</h3>
+                            <img src="../static/computador.png" alt="" style="width: 150px;">
+                            <div>
+                                <h4 id="equi3">Equipamento </h4>
+                                    <input type="text" name="equipamento3" value="{{cadastroro.40}}" > 
+                                <div style="margin-top: 20px;"></div>
+                                <label for="">Quantidade</label>
+                                <br><input type="text" name="quantidade3" id="" value="{{cadastroro.41}}">
+                                <br><label for="">Modelo</label>
+                                <br><input type="text" name="modelo3" id="" value="{{cadastroro.42}}">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <div id="pdd">
+                            <img id="add" src="../static/add.png" alt="">
                         </div>
                     </div>
-                    <div class="opç">
-                        <div class="itens">
-                            <label for="produtos">Edital publicado?</label>
-                            <p style="color: black; font-size: 1.7em;" name="edital" id="prod" value="{{cadastroro.21}}">{{cadastroro.21}}
-                            </p>
+                    <div id="produto" class="prodd">
+                        <div>
+                            <h3>Produto 4</h3>
+                            <img src="../static/computador (1).png" alt="" alt="" style="width: 150px;">
+                            <div>
+                                <h4 id="equi4">Equipamento </h4>
+                                    <input type="text" name="equipamento4" value="{{cadastroro.43}}" > 
+                                <div style="margin-top: 20px;"></div>
+                                <label for="">Quantidade</label>
+                                <br><input type="text" name="quantidade4" id="" value="{{cadastroro.44}}">
+                                <br><label for="" style="margin-top: 10px;">Modelo</label>
+                                <br><input type="text" name="modelo4" id="" value="{{cadastroro.45}}">
+                            </div>
                         </div>
-                        <div class="itens">
-                            <label for="arquivo"><img class="icones" src="../static/arquivo.png" alt=""></label>
-                            <input class="fileimg"  type="file" name="arquivoprinc" id="arquivo" placeholder="Arquivo">
+                        <div>
+                            <h3>Produto 5</h3>
+                            <img src="../static/cpu.png" alt="" alt="" style="width: 150px;">
+                            <div>
+                                <h4 id="equi5">Equipamento</h4>
+                                    <input type="text" name="equipamento5" value="{{cadastroro.46}}" >
+                                <div style="margin-top: 20px;"></div>
+                                <label for="">Quantidade</label>
+                                <br><input type="text" name="quantidade5" id="" value="{{cadastroro.47}}">
+                                <br><label for="">Modelo</label>
+                                <br><input type="text" name="modelo5" id="" value="{{cadastroro.48}}">
+                            </div>
                         </div>
+                        <div>
+                            <h3>Produto 6</h3>
+                            <img src="../static/computador.png" alt="" style="width: 150px;">
+                            <div>
+                                <h4 id="equi6">Equipamento </h4>
+                                    <input type="text" name="equipamento6" value="{{cadastroro.49}}" > 
+                                <div style="margin-top: 20px;"></div>
+                                <label for="">Quantidade</label>
+                                <br><input type="text" name="quantidade6" id="" value="{{cadastroro.50}}">
+                                <br><label for="">Modelo</label>
+                                <br><input type="text" name="modelo6" id="" value="{{cadastroro.51}}">
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="opç">
                     <div>
+                        <div class="itens" >
+                            <label for="arquivo"><img class="icones" src="../static/arquivo.png" alt=""></label>
+                            <input class="fileimg"  type="file" name="arquivoprinc" id="arquivo" placeholder="Arquivo">
+                        </div>
                         <label id="abrir" for="">Status <img style="padding-top: 10px;" src="../static/seta-para-baixo.png" alt=""></label><br>
                         <div id="abrindo" style="display: none; margin-top: 30px;">
                             <input class="status" type="radio" name="status" value="Aprovado" required>
-                            <p>Aprovado</p><br>
-                            <input class="status" type="radio" name="status" value="Negado"><br>
-                            <input class="status" type="radio" name="status" value="Recusado">
+                            Aprovado<br>
+                            <input class="status" type="radio" name="status" value="Negado">Negado<br>
+                            <input class="status" type="radio" name="status" value="Recusado">Recusado
                         </div>
                     </div>
-                    <div>
+                    <br><div>
                         <button class="executaValidacao">Adicionar</button>
                     </div>
                 </div>
@@ -226,11 +297,40 @@
                         <br><input required type="text" name="responsavel" autocomplete="off" value="{{cadastroro.24}}">
                     </div>
                     <div class="opç">
-                        <div>
+                        <div style="margin: 20px;">
                             <label id="abrir1" for="">Status final<img style="padding-top: 10px;" src="../static/seta-para-baixo.png" alt=""></label><br>
                             <div id="abrindo1" style="display: none; margin-top: 30px;">
                                 <input class="status" type="radio" name="statusfinal" value="Finalizado" required>
-                                <p>Finalizado</p><br>
+                                Finalizado<br>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="executaValidacao">Finalizar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form action="/updatereq/{{cadastroro.22}}" method="POST" class="formulário">
+                <div class="prod" >
+                    <h2 style="color: rgba(42, 32, 111, 0.877)"> Novos requerimentos</h2>
+                        <div class="req">
+                            <div>
+                                <input type="radio" name="requerimento" value="Novo registro de oportunidade" >Novo registro de oportunidade<br>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novarodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
                             </div>
                         </div>
                         <div>
@@ -240,8 +340,257 @@
                    
                 </div>
             </form>
-            
-                      
+            <form action="/updatereq/{{cadastroro.22}}" method="POST" class="formulário">
+                <div class="prod" >
+                    <h2 style="color: rgba(42, 32, 111, 0.877)"> Atualizações</h2>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="req">
+                            <div>
+                                <h4>RO</h4>
+                                <div class="itens">
+                                    <label for="quant">N° RO</label>
+                                    <input type="text" name="novonro">
+                                    <div class="itens">
+                                        <label for="quant">Data</label>
+                                        <input type="date" name="novanrodata">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="radio" name="requerimento" value="Extensão" >Extensão<br>
+                                <div class="itens">
+                                    <label for="quant">Validade</label>
+                                    <input type="date" name="novadata">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button class="executaValidacao">Finalizar</button>
+                        </div>
+                    </div>
+                   
+                </div>
+            </form>    
         </Form>
         
     </div>

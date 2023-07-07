@@ -28,7 +28,7 @@ def site_ro():
         cur.execute('SELECT * FROM edital')
         itens = cur.fetchall()
         mysql.connection.commit()
-        return render_template('index.html', nome1=session['nome1'], editals = itens, dataUserc = dataPerfilUsuarioC(), inforLoginc = dataLoginSesionC())
+        return render_template('index.html', nome1=session['nome1'], email=session['email'], editals = itens, dataUserc = dataPerfilUsuarioC(), inforLoginc = dataLoginSesionC())
     return render_template("logincliente.html")
 
 
@@ -114,7 +114,6 @@ def add_tt():
 
 @app.route('/add_ro', methods=['POST'])
 def add_ro():
-    msg = ''
     if request.method == 'POST':
         nome1                      = request.form['nome1']
         telefone1                    = request.form['telefone1']
@@ -124,7 +123,6 @@ def add_ro():
         cur.execute('SELECT * FROM cadastrotamtec WHERE email = %s', (email,))
         account = cur.fetchone()
         cur.close()
-          
         if account:
             flash('Email já cadastrado!')
         else:
@@ -133,7 +131,6 @@ def add_ro():
             mysql.connection.commit()
             flash('Cadastro completo!')
     return redirect (url_for('site_cadastrotamtec'))
-
 
 
 
@@ -159,8 +156,27 @@ def adicionar_registroro():
         observaçãoprinc=request.form['observaçãoprinc']
         editalpubli = request.form['editalpubli']
         vendedor = request.form['vendedor']
+        emailvendedor = request.form['emailvendedor']
+        equipamento1 = request.form['equipamento1']
+        equipamento2 = request.form['equipamento2']
+        equipamento3 = request.form['equipamento3']
+        equipamento4 = request.form['equipamento4']
+        equipamento5 = request.form['equipamento5']
+        equipamento6 = request.form['equipamento6']
+        modelo1 = request.form['modelo1']
+        modelo2 = request.form['modelo2']
+        modelo3 = request.form['modelo3']
+        modelo4 = request.form['modelo4']
+        modelo5 = request.form['modelo5']
+        modelo6 = request.form['modelo6']
+        quantidade1 = request.form['quantidade1']
+        quantidade2 = request.form['quantidade2']
+        quantidade3 = request.form['quantidade3']
+        quantidade4 = request.form['quantidade4']
+        quantidade5 = request.form['quantidade5']
+        quantidade6 = request.form['quantidade6']
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO cadastroro (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, observaçãoprinc, editalpubli, vendedor) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, observaçãoprinc, editalpubli, vendedor))
+        cur.execute('INSERT INTO cadastroro (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, observaçãoprinc, editalpubli, vendedor, emailvendedor, equipamento1, equipamento2, equipamento3, equipamento4, equipamento5, equipamento6, modelo1, modelo2, modelo3, modelo4, modelo5, modelo6, quantidade1, quantidade2, quantidade3, quantidade4, quantidade5, quantidade6) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, observaçãoprinc, editalpubli, vendedor, emailvendedor, equipamento1, equipamento2, equipamento3, equipamento4, equipamento5, equipamento6, modelo1, modelo2, modelo3, modelo4, modelo5, modelo6, quantidade1, quantidade2, quantidade3, quantidade4, quantidade5, quantidade6))
         mysql.connection.commit()
         flash('RO adicionado com sucesso!')
         return redirect (url_for('site_ro'))
@@ -189,7 +205,6 @@ def site_login():
         else: 
             msg = 'Senha ou email invalidos!'
     return render_template("login.html",  msg = msg, dataUser = dataPerfilUsuario(), inforLogin = dataLoginSesion())
-
 
 
 @app.route('/clientes')
@@ -264,6 +279,8 @@ def dataLoginSesion():
         return inforLogin
 
 
+
+
 def dataLoginSesionC():
     if request.method == 'POST' and 'email' in request.form and 'senha' in request.form and 'nome1' in request.form and 'telefone1' in request.form:
         id = request.form['id'] 
@@ -291,6 +308,7 @@ def dataPerfilUsuario():
     cursor.execute("SELECT * FROM cadastro WHERE id='%s'" % (id,))
     datosUsuario = cursor.fetchone() 
     return datosUsuario
+
 
 def dataPerfilUsuarioC():
     cursor = mysql.connection.cursor()
@@ -366,6 +384,54 @@ def site_edit(id):
     return render_template('editarro.html', cadastroro = data[0])
 
 
+@app.route('/ros', methods=['GET','POST'])
+def ros():
+    if 'loggedinC' in session:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM cadastroro WHERE emailvendedor='session['email']'")
+        itens = cur.fetchall()
+        print(itens)
+        mysql.connection.commit()
+        return render_template('RO.html', nome1=session['nome1'], cadastroros = itens, dataUserC = dataPerfilUsuarioC(), inforLoginC = dataLoginSesionC())
+    return render_template("logincliente.html")
+
+
+@app.route('/recusado', methods=['GET','POST'])
+def recusado():
+    if 'loggedin' in session:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM cadastroro WHERE status IN ('Recusado', 'Negado')")
+        itens = cur.fetchall()
+        print(itens)
+        mysql.connection.commit()
+        return render_template('recusado.html', nome=session['nome'], cadastroros = itens, dataUser = dataPerfilUsuario(), inforLogin = dataLoginSesion())
+    return render_template("login.html")
+
+
+@app.route('/aprovado', methods=['GET','POST'])
+def aprovado():
+    if 'loggedin' in session:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM cadastroro WHERE status='Aprovado'")
+        itens = cur.fetchall()
+        print(itens)
+        mysql.connection.commit()
+        return render_template('aprovado.html', nome=session['nome'], cadastroros = itens, dataUser = dataPerfilUsuario(), inforLogin = dataLoginSesion())
+    return render_template("login.html")
+
+
+@app.route('/finalizado', methods=['GET','POST'])
+def finalizado():
+    if 'loggedin' in session:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM cadastroro WHERE statusfinal='Finalizado")
+        itens = cur.fetchall()
+        print(itens)
+        mysql.connection.commit()
+        return render_template('finalizado.html', nome=session['nome'], cadastroros = itens, dataUser = dataPerfilUsuario(), inforLogin = dataLoginSesion())
+    return render_template("login.html")
+
+
 @app.route('/pdf/<id>')
 def site_pdf(id):
     cur = mysql.connection.cursor()
@@ -378,19 +444,49 @@ def site_pdf(id):
 @app.route('/update/<id>', methods=['POST'])
 def site_update(id):
     if request.method == 'POST':
-        modelo = request.form['modelo']
-        quantidade = request.form['quantidade']
+        equipamento1 = request.form['equipamento1']
+        equipamento2 = request.form['equipamento2']
+        equipamento3 = request.form['equipamento3']
+        equipamento4 = request.form['equipamento4']
+        equipamento5 = request.form['equipamento5']
+        equipamento6 = request.form['equipamento6']
+        modelo1 = request.form['modelo1']
+        modelo2 = request.form['modelo2']
+        modelo3 = request.form['modelo3']
+        modelo4 = request.form['modelo4']
+        modelo5 = request.form['modelo5']
+        modelo6 = request.form['modelo6']
+        quantidade1 = request.form['quantidade1']
+        quantidade2 = request.form['quantidade2']
+        quantidade3 = request.form['quantidade3']
+        quantidade4 = request.form['quantidade4']
+        quantidade5 = request.form['quantidade5']
+        quantidade6 = request.form['quantidade6']
         status = request.form['status']
-        
-    
         cur = mysql.connection.cursor()
         cur.execute("""
             UPDATE cadastroro
-            SET modelo = %s,
-                quantidade = %s,
+            SET equipamento1 = %s,
+                equipamento2 = %s,
+                equipamento3 = %s,
+                equipamento4 = %s,
+                equipamento5 = %s,
+                equipamento6 = %s,
+                modelo1 = %s,
+                modelo2 = %s,
+                modelo3 = %s,
+                modelo4 = %s,
+                modelo5 = %s,
+                modelo6 = %s,
+                quantidade1 = %s,
+                quantidade2 = %s,
+                quantidade3 = %s,
+                quantidade4 = %s,
+                quantidade5 = %s,
+                quantidade6 = %s,
                 status = %s
             WHERE id = %s
-        """, (modelo, quantidade, status, id))
+        """, (equipamento1, equipamento2, equipamento3, equipamento4, equipamento5, equipamento6, modelo1, modelo2, modelo3, modelo4, modelo5, modelo6, quantidade1, quantidade2, quantidade3, quantidade4, quantidade5, quantidade6, status, id))
         mysql.connection.commit()
         msg ='Dados atualizados'
         return redirect(url_for('site_cliente', msg=msg))
@@ -428,6 +524,28 @@ def site_updatefinal(id):
         msg ='Dados atualizados'
         return redirect(url_for('site_cliente', msg=msg))
     
+
+@app.route('/updatereq/<id>', methods=['POST'])
+def site_updatereq(id):
+    if request.method == 'POST':
+        requerimento = request.form['requerimento']
+        novonro = request.form['novonro']
+        novadata = request.form['novadata']
+        novarodata = request.form['novarodata']
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            UPDATE cadastroro
+            SET requerimento = % s,
+                novonro = % s,
+                novadata = % s,
+                novarodata = % s
+            WHERE id = %s
+        """, (requerimento, novonro, novadata, novarodata, id))
+        mysql.connection.commit()
+        msg ='Dados atualizados'
+        return redirect(url_for('site_cliente', msg=msg))
+    
+
 
 @app.route('/updatedados', methods=['GET','POST'])
 def site_updatedados():

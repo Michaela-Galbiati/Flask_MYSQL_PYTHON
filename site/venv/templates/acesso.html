@@ -33,21 +33,25 @@
             <h2>
                 Minha conta
             </h2>
-        <form action="updatedados" method="POST" autocomplete="off">
             <div id="dados">
-                    <br><input type="text" name="nome"  placeholder="Nome completo" value="{{nome}}">
-                    <br><input type="tel" name="telefone"  placeholder="Telefone" onkeypress="$(this).mask('(00) 0000-00009')" maxlength="15" id="telefone" value="{{telefone}}">
-                    <br><input type="email" name="email" placeholder="Email" value="{{email}}">
-                    <div class="caixa">
-                        <div class="senhaslayout">
-                            <input type="password" name="senha" id="password" placeholder="Senha" autocomplete="new-password" maxlength="14" minlength="8" title="A senha deve conter no mínimo 8 caracteres, pelo menos 1 letra maiúscula, 1 letra minúscula e 1 caracter especial. " pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$])[a-zA-Z0-9@#$]{8,50}$" value="{{senha}}">
-                            <img src="../static/abrir.png" alt="" id="showPassword" value="show">
+                <form action="updatedados" method="POST" autocomplete="off">
+                    <div >
+                            <div id="alterar">
+                                <br><input type="text" name="nome"  placeholder="Nome completo" value="{{nome}}">
+                                <br><input type="tel" name="telefone"  placeholder="Telefone" onkeypress="$(this).mask('(00) 0000-00009')" maxlength="15" id="telefone" value="{{telefone}}">
+                                <br><input type="email" name="email" placeholder="Email" value="{{email}}">
+                                <div class="caixa">
+                                    <div class="senhaslayout">
+                                        <input type="password" name="senha" id="password" placeholder="Senha" autocomplete="new-password" maxlength="14" minlength="8" title="A senha deve conter no mínimo 8 caracteres, pelo menos 1 letra maiúscula, 1 letra minúscula e 1 caracter especial. " pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$])[a-zA-Z0-9@#$]{8,50}$" value="{{senha}}">
+                                        <img src="../static/abrir.png" alt="" id="showPassword" value="show">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-             </div>
-             <button type="submit" >Alterar dados</button>
-        </form>
-        
+                        <button type="submit" >Alterar dados</button>
+                </form>
+            </div>
+            
         </div>
     </div>
 
