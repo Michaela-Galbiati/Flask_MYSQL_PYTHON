@@ -13,7 +13,7 @@
 </head>
 <body>
     <div>
-        <div id="header" style="display: flex; justify-content: space-between; margin: 10px;">
+        <div id="header" style="display: flex; justify-content: space-between; background-color: rgb(255, 255, 255); height: 50px;">
             <div>
                 <a href="http://www.tamtec.com.br/"><img class="logo" src="../static/logo.png" alt=""></a>
                 {% block content %}
@@ -27,10 +27,9 @@
                 <a href="/logouttt"><h3 class="login">Logout</h3></a>
             </div>
             
-         </div> 
+        </div> 
          <p style="color:black; background-color: blue;">{{msg}}</p>
             <div id="clientes">
-                
                 <div id="ro">
                     <h1 id="cliente">Registros de Cliente</h1>
                     <div >
@@ -51,6 +50,8 @@
                             </div>
                         </DIV>
                     </div>
+
+                  
                     <div id="partes" class="draggable">
                         <div  id="antes" ></div>
                         <div class="p0" id="p1">
@@ -72,7 +73,7 @@
                             {% endfor %}
                         </div>
                         <div>
-                            <h5 class="title">Nome do Projeto</h5>
+                            <h5 class="title">N.P</h5>
                             {% for cadastroro in cadastroros %}
                                 <a class="cadalink" href="/edit/{{cadastroro.22}}"><p> {{cadastroro.11}}</p></a>
                             {% endfor %}
@@ -87,8 +88,8 @@
     
                         </div>
                         <div>
-                            <div>
-                                <h5 class="title">Status final</h5>
+                            <div style="width: 100%;">
+                                <h5 class="title">Finalizado</h5>
                                 {% for cadastroro in cadastroros %}
                                     <p class="status">{{cadastroro.33}}</p>   
                                 {% endfor %}
@@ -108,7 +109,7 @@
                             {% endfor %}
                         </div>
                         <div>
-                            <h5 class="title">N° RO</h5>
+                            <h5 class="title">RO</h5>
                             {% for cadastroro in cadastroros %}
                                 <p> {{cadastroro.25}}</p>
                             {% endfor %}
@@ -132,10 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div id="logot">
-                <img class="logotipo" src="../static/logotipo.png" alt="">
-            </div>
-        
+            <div>
     </div>
     <div>
         <!--

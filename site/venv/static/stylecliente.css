@@ -1,8 +1,14 @@
+@font-face {
+    font-family: titulo;
+    src: url(../static/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf) format(truetype);
+}
+
+
 body{
     padding: 0px;
     margin:0px;
     overflow-X: hidden;
-    background-image: url(../static/fundobl.png);
+    background-image:linear-gradient( #ffffff,  rgb(243, 240, 248));
     font-family: 'titulo',sans-serif;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -14,8 +20,8 @@ body{
     justify-content: space-between;
 } 
 .logo{
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     margin-right: 10px;
 }
 .menuimg{
@@ -25,7 +31,7 @@ body{
 }
 .menu{
     color: #ffffff;
-    background-color: rgba(42, 32, 111, 0.897);
+    background-color: #2a206fe5;
     border-radius: 20px;
     margin: 5px;
 }
@@ -37,7 +43,7 @@ body{
     display: flex; 
     justify-content: center;
     min-width: 300px;
-    max-height: 1000px;
+    max-height: 700px;
 }
 .logotipo{
     max-width: 350px;
@@ -45,6 +51,7 @@ body{
 #logot{
     text-align: center;
     margin: 25px 10px;
+    
 }
 .login{
     color:rgb(127, 30, 97);
@@ -53,11 +60,15 @@ body{
     font-size: 1.3em;
     cursor: pointer;
 }
+#antesap{
+    margin-right: 1250px;
+}
 .indicação{
     background-color: #801f61;
     color: white;
     padding: 10px;
-    border-radius: 0px 20px 20px 20px;
+    border-radius: 20px 20px 20px 0px;
+    width: 100%;
 }
 a{
     text-decoration: none;
@@ -112,19 +123,14 @@ option{
 }
 #ro{
     max-width: 1500px;
-    margin: 80px;
-    position: absolute;
+    margin-bottom: 80px;
+    margin: 0 auto;
+    text-align: center;
     background-color: white;
     border-radius: 5px;
-}
-#clientes{
-    height: 1250px;
-    text-align: center;
-    background-image: linear-gradient(rgb(65, 25, 139),#801f61);
-    margin: 40px 20px 20px 20px;
-    border-radius: 20px;
-    padding: 0px 0px 20px 0px;
-
+    border: 15px solid transparent;
+    border-image: linear-gradient( #801f61,  rgb(46, 17, 100));
+    border-image-slice: 1;
 }
 .link:link{
     color: white;
@@ -177,12 +183,18 @@ option{
     border: 2px solid #801f61;
     border-radius: 20px;
 }
+#clientes{
+    margin-bottom: 50px;
+    margin-left: 30px;
+}
 .cadalink{
-    color: black;
+    color: rgb(190, 28, 150);
     text-decoration: none;
+    background-color:rgba(42, 32, 111, 0.836);
 }
 .cadalink:link{
-    color:#000000;
+    color: rgb(190, 28, 150);
+    
 }
 button{
     background-color: rgba(42, 32, 111, 0.836);
@@ -204,58 +216,39 @@ button:hover{
     margin-top: 50px;
 }
 #antes{
-    margin-right: 350px;
+    margin-right: 550px;
 }
-html ::-webkit-scrollbar {
+#ro ::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
   }
-  html ::-webkit-scrollbar-thumb {
+  #ro ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background:#801f61;
   }
-  html ::-webkit-scrollbar-track {
+  #ro ::-webkit-scrollbar-track {
     background: #ededed;
   }
 @media (max-width:1100px) {
     #ro{
         width: 700px;
-        margin: 20px;
-        position: absolute;
+        margin: 80px;
         background-color: white;
         border-radius: 5px;
     }
     #antes{
-        margin-right: 900px;
-    }
-    #clientes{
-        height: 1250px;
-        text-align: center;
-        background-image: linear-gradient(rgb(65, 25, 139),#801f61);
-        margin: 40px 20px 20px 20px;
-        border-radius: 20px;
-        padding: 0px 0px 20px 0px;
-    
+        margin-right: 1100px;
     }
 }
 @media (max-width:700px) {
     #ro{
         width: 340px;
         margin: 20px;
-        position: absolute;
         background-color: white;
         border-radius: 5px;
     }
     #antes{
-        margin-right: 1400px;
-    }
-    #clientes{
-        height: 1250px;
-        text-align: center;
-        background-image: linear-gradient(rgb(65, 25, 139),#801f61);
-        margin: 40px 20px 20px 20px;
-        border-radius: 20px;
-        padding: 0px 0px 20px 0px;
-    
+        margin-right: 1600px;
     }
 }
 @media (min-width:1250px) {
@@ -263,18 +256,8 @@ html ::-webkit-scrollbar {
     #ro{
         max-width: 1500px;
         margin: 80px;
-        position: absolute;
         background-color: white;
         border-radius: 5px;
-    }
-    #clientes{
-        height: 1250px;
-        text-align: center;
-        background-image: linear-gradient(rgb(65, 25, 139),#801f61);
-        margin: 40px 20px 20px 20px;
-        border-radius: 20px;
-        padding: 0px 0px 20px 0px;
-    
     }
 }
 @media (min-width:1000px) {
@@ -282,17 +265,7 @@ html ::-webkit-scrollbar {
     #ro{
         max-width: 1500px;
         margin: 80px;
-        position: absolute;
         background-color: white;
         border-radius: 5px;
     }
-    #clientes{
-    height: 1250px;
-    text-align: center;
-    background-image: linear-gradient(rgb(65, 25, 139),#801f61);
-    margin: 40px 20px 20px 20px;
-    border-radius: 20px;
-    padding: 0px 0px 20px 0px;
-
-}
 }

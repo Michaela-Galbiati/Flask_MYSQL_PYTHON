@@ -1,8 +1,13 @@
+@font-face {
+    font-family: titulo;
+    src: url(../static/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf) format(truetype);
+}
+
 body{
     padding: 0px;
     margin:0px;
     overflow-X: hidden;
-    background-image: url(../static/Fundo2.png);
+    background-image: linear-gradient( #801f61, rgba(42, 32, 111, 0.836));
     font-family: 'titulo',sans-serif;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -11,6 +16,9 @@ body{
 #header{
     display: flex;
     justify-content: space-between;
+    background-color: white;
+    height: 70px;
+    margin-top: -10px;
 } 
 .logo{
     width: 60px;
@@ -54,13 +62,9 @@ select{
     width: 20px;
 }
 .menu{
-    color: #ffffff;
-    background-color: rgba(42, 32, 111, 0.897);
+    color: rgba(42, 32, 111, 0.897);
     border-radius: 20px;
     margin: 5px;
-}
-.menu:hover{
-    background-color: #801f61;
 }
 h1{
     font-size: 1.2em;
@@ -72,7 +76,6 @@ h2{
 }
 .registro{
     text-decoration: none;
-    color: #ffffff;
 }
 .senha{
     text-decoration: none;
@@ -111,6 +114,9 @@ input:focus {
     margin-top: 50px;
     border: 2px solid #801f61;
     border-radius: 20px;
+    border: 15px solid transparent;
+    border-image: linear-gradient(#fadef2, rgba(239, 236, 255, 0.836));
+    border-image-slice: 1;
 }
 button{
     background-color: rgba(42, 32, 111, 0.836);

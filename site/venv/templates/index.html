@@ -16,21 +16,18 @@
 <body>
     <div>
         <div style="display: flex; justify-content: space-between; margin-top: 5px;">
-            <div>
-                <a href="http://www.tamtec.com.br/"><img class="logologin" src="../static/logo.png" alt=""></a>
+           <div>
+                <div style="display: flex;">
+                    <a href="http://www.tamtec.com.br/"><img class="logologin" src="../static/logo.png" alt=""></a>
+                    <a href="/acesso"><h3 class="login">Perfil</h3></a>
+                </div>
                 {% block content %}
-                    <p class="indicação"> Olá {{nome1}}!</p>
+                    <p class="indicação"> Olá, {{nome1}}!</p>
                 {% endblock %}
             </div>
+            
             <div>
-                <a href="/acessocliente"><h3 class="login">Conta</h3></a>
-            </div>
-            <div>
-                <a href="/logout"><h3 class="login">Logout</h3></a>
-
-            </div>
-            <div>
-                <a href="/ros"><h3 class="login">RO</h3></a>
+                <a href="/rovendedor"><h3 class="login">RO</h3></a>
 
             </div>
         </div>
@@ -52,13 +49,16 @@
                 <div id="dados">
                     <div id="dadospessoais">
                         <h2>Dados do cliente</h2>
-                        <div class="itens">
+                        <div class="itens" style="display: none;">
                             <label for="nome">Vendedor</label>
                             <input required  type="text" name="vendedor" placeholder="Vendedor"  autocomplete="off" value="{{nome1}}">
                         </div>
-                        <div class="itens">
+                        <div class="itens" style="display: none;">
                             <label for="nome">Email</label>
                             <input required  type="text" name="emailvendedor" placeholder="Vendedor"  autocomplete="off" value="{{email}}">
+                        </div>
+                        <div class="itens">
+                            <h3>Contato principal</h3>
                         </div>
                         <div class="itens">
                             <label for="nome"><img class="icones" src="../static/name.png" alt=""></label>
@@ -74,12 +74,15 @@
                         </div>
                         <div class="itens">
                             <label for="cargo"><img class="icones" src="../static/cargo.png" alt=""></label>
-                            <input required type="text" name="cargoprinc"  placeholder="*Cargo" autocomplete="off">
+                            <input  type="text" name="cargoprinc"  placeholder="Cargo" autocomplete="off">
                         </div>
                         <div id="addi">
                             <img id="add" src="../static/add.png" alt="">
                         </div>
                         <div id="adicionar">
+                            <div class="itens">
+                                <h3>Contato financeiro</h3>
+                            </div>
                             <div class="itens">
                                 <label for="nome1"><img class="icones" src="../static/name.png" alt=""></label>
                                 <input type="text" name="nome1princ"  placeholder="Nome" autocomplete="off">
@@ -91,6 +94,10 @@
                             <div class="itens">
                                 <label for="email1"><img class="icones" src="../static/e-mail.png" alt=""></label>
                                 <input type="text" name="email1princ"  placeholder="Email" autocomplete="off">
+                            </div>
+                            <div class="itens">
+                                <label for="cargo"><img class="icones" src="../static/cargo.png" alt=""></label>
+                                <input required type="text" name="cargo2"  placeholder="Cargo" autocomplete="off">
                             </div>
                             <div id="addi2">
                                 <img id="add2" src="../static/add2.png" alt="">
@@ -109,6 +116,10 @@
                             <div class="itens">
                                 <label for="email2"><img class="icones" src="../static/e-mail.png" alt=""></label>
                                 <input type="text" name="email2princ" id="email2" placeholder="Email" autocomplete="off">
+                            </div>
+                            <div class="itens">
+                                <label for="cargo"><img class="icones" src="../static/cargo.png" alt=""></label>
+                                <input required type="text" name="cargo3"  placeholder="Cargo" autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -130,35 +141,33 @@
                             <br><label for="razao">Razão social</label><br/>
                             <input id="razao" type="text" name="razao" size="35" maxlength="50"><br/><br/>
                         </div>
-                        <div class="itens">
-                            <label for="unidade"><img class="icones" src="../static/setor.png" alt=""></label>
-                            <input required type="text" name="unidadeprinc"  placeholder="*Unidade" autocomplete="off">
-                        </div>
                     </div>
                 </div>
                 <div id="outros">
-                    <h2>Descrição</h2>
-                    <div class="itens">
-                        <label for="">Qual o problema de negócio que o cliente tem, e busca resolver com a solução Lenovo? Qual o tipo de compra a ser realizada? Compra direta, adesão, edital e outros?</label>
+                    <h2 style="text-align: center;">Questionário do fabricante para o registro de oportunidade</h2>
+                    <div class="itens" style="text-align: justify;">
+                        <label class="pergunta" for="">Qual o problema de negócio que o cliente tem, e busca resolver com a solução Lenovo? Qual o tipo de compra a ser realizada? Compra direta, adesão, edital e outros?</label>
                         <br><textarea required name="observaçãoprinc" id="observação" placeholder="Ex: Esta oportunidade visa o atendimento ás necessidades da (Tamandaré Informática LTDA), possibilitando a (aquisição / locação) de equipamentos do tipo (desktop/ servidores / softwares) para a (renovação do parquer tecnológico / criação de um novo ambiente), para melhor suprir as necessidades do cliente." autocomplete="off"></textarea>
                     </div>
                     <div class="itens">
-                        <label for="">Qual será o critério de decisão que o cliente irá utilizar?</label>
+                        <label class="pergunta" for="">Qual será o critério de decisão que o cliente irá utilizar?</label>
                         <br><textarea name="decisão" id="observação" autocomplete="off" value="Melhor atendimento das especificações técnicas fornecidas pelo cliente.">Melhor atendimento das especificações técnicas fornecidas pelo cliente.</textarea>
                     </div>
                     <div class="itens">
-                        <label for="">Quais são as métricas que serão usadas pelo cliente para definir compra?</label>
+                        <label class="pergunta" for="">Quais são as métricas que serão usadas pelo cliente para definir compra?</label>
                 
                         <br><textarea name="métricas" id="observação" autocomplete="off" value="Melhor atendimento das especificações técnicas fornecidas pelo cliente.">Melhor atendimento das especificações técnicas fornecidas pelo cliente.</textarea>
                     </div>
-                    <label for="">Edital publicado?</label>
-                    <select required name="editalpubli" id="">
-                        <option value="">Escolha</option>
-                        {% for edital in editals %}
-                            <option value="{{edital.1}}">{{edital.1}}</option>
-                        {% endfor %}
-                    </select> 
-                    <div class="itens">
+                    <div style="text-align: center;">
+                        <label for="">Edital publicado?</label>
+                        <select required name="editalpubli" id="">
+                            <option value="">Escolha</option>
+                            {% for edital in editals %}
+                                <option value="{{edital.1}}">{{edital.1}}</option>
+                            {% endfor %}
+                        </select> 
+                    </div>
+                    <div class="itens" style="text-align: center;" >
                         <label for="arquivo"><img class="icones" src="../static/arquivo.png" alt=""></label>
                         <input class="fileimg"  type="file" name="arquivoprinc" id="arquivo" placeholder="Arquivo">
                     </div>
@@ -255,7 +264,7 @@
                         </div>
                         <div id="produto" class="prodd" style="display: none;">
                             <div>
-                                <h3>Produto 1</h3>
+                                <h3>Produto 4</h3>
                                 <img src="../static/computador (1).png" alt="" alt="" style="width: 150px;">
                                 <div>
                                     <h4 id="equi4">Equipamento <img src="../static/sinal-de-seta-para-baixo-para-navegar.png" alt="" ></h4>
@@ -282,7 +291,7 @@
                                 </div>
                             </div>
                             <div>
-                                <h3>Produto 2</h3>
+                                <h3>Produto 5</h3>
                                 <img src="../static/cpu.png" alt="" alt="" style="width: 150px;">
                                 <div>
                                     <h4 id="equi5">Equipamento <img src="../static/sinal-de-seta-para-baixo-para-navegar.png" alt=""></h4>
@@ -309,7 +318,7 @@
                                 </div>
                             </div>
                             <div>
-                                <h3>Produto 3</h3>
+                                <h3>Produto 6</h3>
                                 <img src="../static/computador.png" alt="" style="width: 150px;">
                                 <div>
                                     <h4 id="equi6">Equipamento <img src="../static/sinal-de-seta-para-baixo-para-navegar.png" alt="" ></h4>
@@ -566,6 +575,8 @@ function validaCPF(cpf) {
         return false;       
     return true;   
 }
+
+
 
 // Valida CNPJ
 

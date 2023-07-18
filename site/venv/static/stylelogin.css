@@ -7,7 +7,7 @@ body{
     padding: 0px;
     margin:0px;
     overflow: hidden;
-    background-image: url(../static/fundobl.png);
+    background-image: linear-gradient( #801f61, rgba(42, 32, 111, 0.836));
     font-family: 'titulo',sans-serif;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -19,14 +19,18 @@ body{
 }
 #login1{
     background-color: #ffffff;
-    margin: 60px 50px 50px 120px;
-    position: absolute;
+    margin: 0 auto;
     text-align: center;
     border-radius: 15px;
+    border: 15px solid transparent;
+    border-image: linear-gradient(#fadef2, rgba(239, 236, 255, 0.836));
+    border-image-slice: 1;
+    max-width: 500px;
+    margin-top: 150px;
 }
 a{
     text-decoration: none;
-    color:rgb(42, 32, 111);
+    color:rgb(255, 255, 255);
 }
 a:link{
     color:rgb(42, 32, 111);
@@ -87,14 +91,7 @@ input:focus {
     cursor: pointer;
     margin-right: 50px;
 }
-#cadastro{
-    background-image: linear-gradient( #801f61, rgba(42, 32, 111, 0.836));
-    width: 700px;
-    height: 550px;
-    border-radius: 5px;
-    margin: 0 auto;
-    margin-top: 150px;
-}
+
 .redefiniçãoroxo{
     color: #801f61;
     text-align: center;
@@ -138,21 +135,7 @@ h1{
     text-align: center;
 }
 @media (max-width: 700px) {
-    #login1{
-        background-color: #ffffff;
-        margin-left:-190px;
-        position: absolute;
-        text-align: center;
-        border-radius: 15px;
-        border: 15px solid transparent;
-        border-image: linear-gradient(to right,#801f61, rgba(42, 32, 111, 0.836));
-        border-image-slice: 1;
-    }
-
-    #cadastro{
-        width: 0px;
-        height: 0px;
-    }
+    
     .logotipo{
         max-width: 300px;
     }

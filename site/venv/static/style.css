@@ -108,12 +108,17 @@ body{
     font-size: 1.4em;
     cursor: pointer;
 }
+.pergunta{
+    text-align: left;
+    font-size: 1.5em;
+}
 .indicação{
     background-color: #801f61;
     color: white;
     padding: 10px;
     border-radius: 0px 20px 20px 20px;
     width: 100%;
+    margin: 10px;
 }
 #registroro{
     margin: 0;
@@ -121,14 +126,12 @@ body{
 
 }
 .formulário{
-    text-align: center;
     background-color: rgb(255, 255, 255);
     margin: 0px 10px 20px 10px;
     border-radius: 20px;
     padding: 0px 0px 20px 0px;
     border: 4px solid #2a206fd5;
     box-shadow: 5px 5px rgba(65, 25, 139, 0.226);
-
 }
 a{
     text-decoration: none;
@@ -137,7 +140,7 @@ input, textarea{
 
     cursor: pointer;
     font-family: 'titulo',sans-serif;
-    font-size: 1.5em;
+    font-size: 1.3em;
     border: none;
     border-bottom: 2px solid #801f61;
     background-color:rgba(42, 32, 111, 0);
@@ -152,7 +155,7 @@ input, textarea{
 }
 textarea{
     height: 150px;
-    width: 1200px;
+    width: 95%;
 }
 textarea:focus, input:focus, select:focus {
     box-shadow: 0 0 0 0;
@@ -195,6 +198,7 @@ textarea:focus, input:focus, select:focus {
     color: white;
     padding: 5px;
     border-radius: 15px 15px 0px 0px;
+    text-align: center;
 }
 h1{
     font-family: 'titulo',sans-serif;
@@ -218,6 +222,7 @@ h2{
     border-radius: 20px;
     border: 2px solid rgba(42, 32, 111, 0.836);
     color: rgba(42, 32, 111, 0.836);
+    text-align: center;
 
 }
 #dadosprofissionais{
@@ -226,6 +231,7 @@ h2{
     border-radius: 20px;
     border: 2px solid rgba(42, 32, 111, 0.836);
     color: rgba(42, 32, 111, 0.836);
+    text-align: center;
 
 
 }
@@ -236,6 +242,7 @@ h2{
     border-radius: 20px;
     border: 2px solid rgba(42, 32, 111, 0.836);
     color: rgba(42, 32, 111, 0.836);
+    justify-content: center;
 
 
 }
@@ -254,6 +261,7 @@ h2{
     border-radius: 20px;
     color: rgba(42, 32, 111, 0.836);
     margin: auto;
+    text-align: center;
 
 }
 #final{
@@ -321,7 +329,7 @@ button:hover{
 @media (max-width:1200px) {
     textarea{
         height: 150px;
-        width: 650px;
+        width: 95%;
     }
     #produto{
         display: grid;
@@ -362,7 +370,7 @@ button:hover{
     }
     textarea{
         height: 250px;
-        width: 300px;
+        width: 95%;
         cursor: pointer;
         font-family: 'titulo',sans-serif;
         font-size: 1.3em;
@@ -380,7 +388,7 @@ button:hover{
     input{
         cursor: pointer;
         font-family: 'titulo',sans-serif;
-        font-size: 1.3em;
+        font-size: 1.2em;
         border: none;
         border-bottom: 2px solid #801f61;
         background-color:rgba(42, 32, 111, 0);

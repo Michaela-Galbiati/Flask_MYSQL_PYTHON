@@ -220,6 +220,19 @@ def site_cliente():
 
 
 
+@app.route('/rovendedor')
+def siterovendedor():
+    if 'loggedinC' in session: 
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT emailvendedor FROM cadastroro WHERE emailvendedor = {} ')
+        itens = cur.fetchall()
+        print(itens)
+        mysql.connection.commit()
+        return render_template('revendedor.html', nome1=session['nome1'], cadastroros = itens, dataUserC = dataPerfilUsuarioC(), inforLoginC = dataLoginSesionC())
+    return render_template("logincliente.html")
+
+
+
 @app.route('/logincliente', methods=['GET', 'POST'])
 def site_logincliente():
     msg = '' 
@@ -400,7 +413,7 @@ def ros():
 def recusado():
     if 'loggedin' in session:
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM cadastroro WHERE status IN ('Recusado', 'Negado')")
+        cur.execute("SELECT * FROM cadastroro WHERE status IN ('Recusado', 'Negado') OR retorno IN ('Prazo excedido', 'Em análise')")
         itens = cur.fetchall()
         print(itens)
         mysql.connection.commit()
@@ -424,7 +437,7 @@ def aprovado():
 def finalizado():
     if 'loggedin' in session:
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM cadastroro WHERE statusfinal='Finalizado")
+        cur.execute("SELECT * FROM cadastroro WHERE statusfinal='Finalizado' ")
         itens = cur.fetchall()
         print(itens)
         mysql.connection.commit()
@@ -529,18 +542,86 @@ def site_updatefinal(id):
 def site_updatereq(id):
     if request.method == 'POST':
         requerimento = request.form['requerimento']
+        retorno = request.form['retorno']
         novonro = request.form['novonro']
         novadata = request.form['novadata']
         novarodata = request.form['novarodata']
+        novonro1 = request.form['novonro1']
+        novadata1 = request.form['novadata1']
+        novarodata1 = request.form['novarodata1']
+        novonro2 = request.form['novonro2']
+        novadata2 = request.form['novadata2']
+        novarodata2 = request.form['novarodata2']
+        novonro3 = request.form['novonro3']
+        novadata3 = request.form['novadata3']
+        novarodata3 = request.form['novarodata3']
+        novonro4 = request.form['novonro4']
+        novadata4 = request.form['novadata4']
+        novarodata4 = request.form['novarodata4']
+        novonro5 = request.form['novonro5']
+        novadata5 = request.form['novadata5']
+        novarodata5 = request.form['novarodata5']
+        novonro6 = request.form['novonro6']
+        novadata6 = request.form['novadata6']
+        novarodata6 = request.form['novarodata6']
+        novonro7 = request.form['novonro7']
+        novadata7 = request.form['novadata7']
+        novarodata7 = request.form['novarodata7']
+        novonro8 = request.form['novonro8']
+        novadata8 = request.form['novadata8']
+        novarodata8 = request.form['novarodata8']
+        novonro9 = request.form['novonro9']
+        novadata9 = request.form['novadata9']
+        novarodata9 = request.form['novarodata9']
+        novonro10 = request.form['novonro10']
+        novadata10 = request.form['novadata10']
+        novarodata10 = request.form['novarodata10']
+        novonro11 = request.form['novonro11']
+        novadata11 = request.form['novadata11']
+        novarodata11 = request.form['novarodata11']
         cur = mysql.connection.cursor()
         cur.execute("""
             UPDATE cadastroro
             SET requerimento = % s,
+                retorno = % s,
                 novonro = % s,
                 novadata = % s,
-                novarodata = % s
+                novarodata = % s,
+                novonro1 = % s,
+                novadata1 = % s,
+                novarodata1 = % s,
+                novonro2 = % s,
+                novadata2 = % s,
+                novarodata2 = % s,
+                novonro3 = % s,
+                novadata3 = % s,
+                novarodata3 = % s,
+                novonro4 = % s,
+                novadata4 = % s,
+                novarodata4 = % s,
+                novonro5 = % s,
+                novadata5 = % s,
+                novarodata5 = % s,
+                novonro6 = % s,
+                novadata6 = % s,
+                novarodata6 = % s,
+                novonro7 = % s,
+                novadata7 = % s,
+                novarodata7 = % s,
+                novonro8 = % s,
+                novadata8 = % s,
+                novarodata8 = % s,
+                novonro9 = % s,
+                novadata9 = % s,
+                novarodata9 = % s,
+                novonro10 = % s,
+                novadata10 = % s,
+                novarodata10 = % s,
+                novonro11 = % s,
+                novadata11 = % s,
+                novarodata11 = % s
             WHERE id = %s
-        """, (requerimento, novonro, novadata, novarodata, id))
+        """, (requerimento, retorno, novonro, novadata, novarodata, novonro1, novadata1, novarodata1, novonro2, novadata2, novarodata2, novonro3, novadata3, novarodata3, novonro4, novadata4, novarodata4, novonro5, novadata5, novarodata5, novonro6, novadata6, novarodata6, novonro7, novadata7, novarodata7, novonro8, novadata8, novarodata8, novonro9, novadata9, novarodata9, novonro10, novadata10, novarodata10, novonro11, novadata11, novarodata11, id))
         mysql.connection.commit()
         msg ='Dados atualizados'
         return redirect(url_for('site_cliente', msg=msg))

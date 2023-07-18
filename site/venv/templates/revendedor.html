@@ -15,15 +15,14 @@
     <div>
         <div id="header" style="display: flex; justify-content: space-between; margin: 10px;">
             <div>
-                <div style="display: flex;">
-                    <a href="http://www.tamtec.com.br/"><img class="logo" src="../static/logo.png" alt=""></a>
-                    <a href="/acesso"><h3 class="login">Perfil</h3></a>
-                </div>
+                <a href="http://www.tamtec.com.br/"><img class="logo" src="../static/logo.png" alt=""></a>
                 {% block content %}
-                    <p class="indicação"> Olá, {{nome}}!</p>
+                    <p class="indicação"> Olá, {{nome1}}!</p>
                 {% endblock %}
             </div>
-            
+            <div>
+                <a href="/acesso"><h3 class="login">Conta</h3></a>
+            </div>
             <div>
                 <a href="/logouttt"><h3 class="login">Logout</h3></a>
             </div>
@@ -114,12 +113,6 @@
                             <h5 class="title">RO</h5>
                             {% for cadastroro in cadastroros %}
                                 <p> {{cadastroro.26}}</p>
-                            {% endfor %}
-                        </div>
-                        <div>
-                            <h5 class="title">Retorno</h5>
-                            {% for cadastroro in cadastroros %}
-                                <p> {{cadastroro.94}}</p>
                             {% endfor %}
                         </div>
                         <div>

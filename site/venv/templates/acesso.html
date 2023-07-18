@@ -21,13 +21,8 @@
                 <a href="http://www.tamtec.com.br/"><img class="logo" src="../static/logo.png" alt=""></a>
             </div>
             <div class="menu">
-                <h1><a class="registro" href="registroro">Registro de clientes</a></h1>
+                <h1><a class="registro" href="clientes">Registro de clientes</a></h1>
             </div>
-            <form action="deleteacessott" method="POST">
-                <div>
-                    <button style="color:rgb(255, 255, 255)" onclick="cadastro()">Deletar conta</button>
-                </div>
-            </form>
         </div>
         <div id="minhaconta">
             <h2>
@@ -42,7 +37,7 @@
                                 <br><input type="email" name="email" placeholder="Email" value="{{email}}">
                                 <div class="caixa">
                                     <div class="senhaslayout">
-                                        <input type="password" name="senha" id="password" placeholder="Senha" autocomplete="new-password" maxlength="14" minlength="8" title="A senha deve conter no mínimo 8 caracteres, pelo menos 1 letra maiúscula, 1 letra minúscula e 1 caracter especial. " pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$])[a-zA-Z0-9@#$]{8,50}$" value="{{senha}}">
+                                        <input style="margin-left: 50px;" type="password" name="senha" id="password" placeholder="Senha" autocomplete="new-password" maxlength="14" minlength="8" title="A senha deve conter no mínimo 8 caracteres, pelo menos 1 letra maiúscula, 1 letra minúscula e 1 caracter especial. " pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$])[a-zA-Z0-9@#$]{8,50}$" value="{{senha}}">
                                         <img src="../static/abrir.png" alt="" id="showPassword" value="show">
                                     </div>
                                 </div>
@@ -52,7 +47,13 @@
                 </form>
             </div>
             
+            
         </div>
+        <form action="deleteacessott" method="POST">
+            <div style="margin: 0 auto; text-align: center; margin-top: 100px">
+                <button style="background-color:rgb(255, 255, 255); color: #801f61;" onclick="cadastro()">Deletar conta</button>
+            </div>
+        </form>
     </div>
 
 <script>
