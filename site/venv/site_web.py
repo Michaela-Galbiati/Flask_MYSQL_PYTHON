@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, url_for
 from flask_mysqldb import MySQL
 import MySQLdb.cursors, re, hashlib
+import re
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
-
+from flask_bcrypt import Bcrypt
 
 app = Flask (__name__)
 
@@ -17,19 +18,27 @@ mysql = MySQL(app)
 app.secret_key = 'mysecretkey'
 app.permanent_session_lifetime = timedelta(seconds=10)
 
-
-
-
+bcrypt = Bcrypt(app)
+hashed_password = bcrypt.generate_password_hash
 
 @app.route('/registroro', methods=['GET','POST'])
 def site_ro():
-    if 'loggedinC' in session:
+    if 'loggedin' in session:
         cur = mysql.connection.cursor()
         cur.execute('SELECT * FROM edital')
         itens = cur.fetchall()
         mysql.connection.commit()
-        return render_template('index.html', nome1=session['nome1'], email=session['email'], editals = itens, dataUserc = dataPerfilUsuarioC(), inforLoginc = dataLoginSesionC())
+        return render_template('index.html', nome=session['nome'], email=session['email'], editals = itens, dataUser = dataPerfilUsuario(), inforLogin = dataLoginSesion())
     return render_template("logincliente.html")
+
+
+@app.route('/success', methods = ['POST'])  
+def success():  
+    if request.method == 'POST':  
+        f = request.files['file']
+        f.save(f.filename)  
+        return render_template("text.html", name = f.filename)  
+  
 
 
 
@@ -126,8 +135,9 @@ def add_ro():
         if account:
             flash('Email já cadastrado!')
         else:
+            senha_hash = generate_password_hash(senha, method='sha256')
             cur = mysql.connection.cursor()
-            cur.execute('INSERT INTO cadastrotamtec (nome1, telefone1, email, senha) VALUES (%s, %s, %s, %s)', (nome1, telefone1, email, senha))
+            cur.execute('INSERT INTO cadastrotamtec (nome1, telefone1, email, senha) VALUES (%s, %s, %s, %s)', (nome1, telefone1, email, senha_hash))
             mysql.connection.commit()
             flash('Cadastro completo!')
     return redirect (url_for('site_cadastrotamtec'))
@@ -175,12 +185,13 @@ def adicionar_registroro():
         quantidade4 = request.form['quantidade4']
         quantidade5 = request.form['quantidade5']
         quantidade6 = request.form['quantidade6']
+        arquivoprinc = request.file['arquivoprinc'].read()
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO cadastroro (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, observaçãoprinc, editalpubli, vendedor, emailvendedor, equipamento1, equipamento2, equipamento3, equipamento4, equipamento5, equipamento6, modelo1, modelo2, modelo3, modelo4, modelo5, modelo6, quantidade1, quantidade2, quantidade3, quantidade4, quantidade5, quantidade6) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, observaçãoprinc, editalpubli, vendedor, emailvendedor, equipamento1, equipamento2, equipamento3, equipamento4, equipamento5, equipamento6, modelo1, modelo2, modelo3, modelo4, modelo5, modelo6, quantidade1, quantidade2, quantidade3, quantidade4, quantidade5, quantidade6))
+        arquivoprinc = request.files['arquivoprinc']
+        cur.execute('INSERT INTO cadastroro (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, observaçãoprinc, editalpubli, vendedor, emailvendedor, equipamento1, equipamento2, equipamento3, equipamento4, equipamento5, equipamento6, modelo1, modelo2, modelo3, modelo4, modelo5, modelo6, quantidade1, quantidade2, quantidade3, quantidade4, quantidade5, quantidade6, arquivoprinc, arquivoprinc) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s , %s)', (nomeprinc, telprinc, emailprinc, cargoprinc, nome1princ, tel1princ, email1princ, nome2princ, tel2princ, email2princ, rsprinc, nomeprojprinc, CNPJprinc, unidadeprinc, decisão, métricas, observaçãoprinc, editalpubli, vendedor, emailvendedor, equipamento1, equipamento2, equipamento3, equipamento4, equipamento5, equipamento6, modelo1, modelo2, modelo3, modelo4, modelo5, modelo6, quantidade1, quantidade2, quantidade3, quantidade4, quantidade5, quantidade6, arquivoprinc, arquivoprinc))
         mysql.connection.commit()
         flash('RO adicionado com sucesso!')
         return redirect (url_for('site_ro'))
-
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -190,7 +201,7 @@ def site_login():
         email = request.form['email'] 
         senha = request.form['senha']
         cursor = mysql.connection.cursor()
-        cursor.execute('SELECT * FROM cadastro WHERE email = % s AND senha = % s', (email, senha, )) 
+        cursor.execute('SELECT * FROM cadastro WHERE email = % s AND senha = % s AND setor IN ("Processo", "Administrativo") ', (email, senha, )) 
         account = cursor.fetchone() 
         if account is not None: 
             session['loggedin'] = True
@@ -202,7 +213,23 @@ def site_login():
             session.permanent= True
             msg = 'Login confirmado!'
             return redirect (url_for('site_cliente'))
-        else: 
+    if request.method == 'POST' and 'email' in request.form and 'senha' in request.form: 
+        email = request.form['email'] 
+        senha = request.form['senha']
+        cursor = mysql.connection.cursor()
+        cursor.execute('SELECT * FROM cadastro WHERE email = % s AND senha = % s AND setor= "Vendas" ', (email, senha, )) 
+        account = cursor.fetchone() 
+        if account is not None: 
+            session['loggedin'] = True
+            session['id'] = account[5] 
+            session['email'] = account[2] 
+            session['nome'] = account[0] 
+            session['telefone'] = account[1]
+            session['senha'] = account[3] 
+            session.permanent= True
+            msg = 'Login confirmado!'
+            return redirect (url_for('site_ro'))
+        else:
             msg = 'Senha ou email invalidos!'
     return render_template("login.html",  msg = msg, dataUser = dataPerfilUsuario(), inforLogin = dataLoginSesion())
 
@@ -217,6 +244,18 @@ def site_cliente():
         mysql.connection.commit()
         return render_template('clientes.html', nome=session['nome'], cadastroros = itens, dataUser = dataPerfilUsuario(), inforLogin = dataLoginSesion())
     return render_template("login.html")
+
+
+@app.route('/vendedores')
+def sitevendedores():
+    if 'loggedinC' in session:
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM cadastroro')
+        itens = cur.fetchall()
+        print(itens)
+        mysql.connection.commit()
+        return render_template('RO.html', nome=session['nome1'], cadastroros = itens, dataUserC = dataPerfilUsuarioC(), inforLoginC = dataLoginSesionC())
+    return render_template("logincliente.html")
 
 
 
@@ -238,17 +277,17 @@ def site_logincliente():
     msg = '' 
     if request.method == 'POST' and 'email' in request.form and 'senha' in request.form: 
         email = request.form['email'] 
-        senha = request.form['senha'] 
+        senha = request.form['senha']
         cursor = mysql.connection.cursor()
-        cursor.execute('SELECT * FROM cadastrotamtec WHERE email = % s AND senha = % s', (email, senha, )) 
-        account = cursor.fetchone() 
-        if account is not None: 
+        cursor.execute('SELECT * FROM cadastrotamtec WHERE email = % s AND senha= % s', (email, senha,)) 
+        account = cursor.fetchone()
+        if account :
             session['loggedinC'] = True
             session['id'] = account[4] 
             session['email'] = account[2] 
             session['nome1'] = account[0] 
             session['telefone1'] = account[1]
-            session['senha'] = account[3] 
+            session['senha'] = account[3]
             session.permanent = True
             msg = 'Login confirmado!'
             return redirect (url_for('site_ro'))
@@ -290,7 +329,6 @@ def dataLoginSesion():
             session['telefone'] = inforLogin[1] 
             session.permanent = True
         return inforLogin
-
 
 
 
@@ -397,11 +435,11 @@ def site_edit(id):
     return render_template('editarro.html', cadastroro = data[0])
 
 
-@app.route('/ros', methods=['GET','POST'])
+@app.route('/ros', methods=['POST'])
 def ros():
     if 'loggedinC' in session:
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM cadastroro WHERE emailvendedor='session['email']'")
+        cur.execute("SELECT * FROM cadastroro WHERE emailvendedor= '{}' ")
         itens = cur.fetchall()
         print(itens)
         mysql.connection.commit()

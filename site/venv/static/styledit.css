@@ -3,6 +3,11 @@
     src: url(../static/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf) format(truetype);
 }
 
+html{
+    padding: 0px;
+    margin:0px;
+}
+
 body{
     padding: 0px;
     margin:0px;

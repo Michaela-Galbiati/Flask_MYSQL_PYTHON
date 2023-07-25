@@ -35,7 +35,7 @@
                     <br><input type="email" name="email"placeholder="Email" value="{{email}}">
                     <div class="caixa">
                         <div class="senhaslayout">
-                            <input type="password" name="senha" id="password" placeholder="Senha" autocomplete="new-password" maxlength="14" minlength="8" title="A senha deve conter no mínimo 8 caracteres, pelo menos 1 letra maiúscula, 1 letra minúscula e 1 caracter especial. " pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$])[a-zA-Z0-9@#$]{8,50}$" value="{{senha}}">
+                            <input style="margin-left: 50px;"  type="password" name="senha" id="password" placeholder="Senha" autocomplete="new-password" maxlength="14" minlength="8" title="A senha deve conter no mínimo 8 caracteres, pelo menos 1 letra maiúscula, 1 letra minúscula e 1 caracter especial. " pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$])[a-zA-Z0-9@#$]{8,50}$" value="{{senha}}">
                             <img src="../static/abrir.png" alt="" id="showPassword" value="show">
                         </div>
                 </div>
@@ -43,8 +43,8 @@
             <button type="submit">Alterar dados</button>
         </form>
         <form action="deleteacesso" method="POST">
-            <div>
-                <button style="color:white">Deletar</button>
+            <div style="margin: 0 auto; text-align: center; margin-top: 100px">
+                <button style="background-color:rgb(255, 255, 255); color: #801f61;">Deletar</button>
             </div>
         </form>
         

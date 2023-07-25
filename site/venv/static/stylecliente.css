@@ -218,6 +218,9 @@ button:hover{
 #antes{
     margin-right: 550px;
 }
+#antess{
+    margin-right: 0px;
+}
 #ro ::-webkit-scrollbar {
     width: 5px;
     height: 5px;

@@ -1,52 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Contagem regressiva</h1>
-<form name="form_main">
-  <label for="numero">Data:</label> 
-  <input name='date_end' type="date" onblur="resetCountdown()" />
-  <br>
-</form>
-<div class="container">
-  <h1>Contagem regressiva até a data selecionada:</h1>
-  <ul>
-    <li><span id="days"></span>days</li>
-    <li><span id="hours"></span>Hours</li>
-    <li><span id="minutes"></span>Minutes</li>
-    <li><span id="seconds"></span>Seconds</li>
-  </ul>
-</div>
-
-<script>
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
-
-    let count_down = new Date('03/03/2025 00:00:00').getTime();
-    let x = setInterval(() => countDown(), second);
-
-    function countDown() {
-    let now = new Date(Date.now()).getTime();
-    let diff = count_down - now;
-
-    document.getElementById('days').innerText = Math.floor(diff / day);
-    document.getElementById('hours').innerText = Math.floor(diff % day / hour);
-    document.getElementById('minutes').innerText = Math.floor(diff % hour / minute);
-    document.getElementById('seconds').innerText = Math.floor(diff % minute / second);
-    }
-
-    function resetCountdown() {
-    clearInterval(x);
-    let date_end = document.form_main.date_end.value;
-    count_down = new Date(`${date_end} 00:00:00`).getTime();
-    x = setInterval(() => countDown(), second);
-    }
-</script>
-</body>
+<!doctype html>
+<html>
+  <head>
+    <title>FLASK CSV File Upload</title>
+  </head>
+  <body>
+    <h1>Upload your CSV file</h1>
+    <form method="POST" action="" enctype="multipart/form-data">
+      <p><input type="file" name="file"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+  </body>
 </html>
