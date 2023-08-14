@@ -15,6 +15,37 @@ body{
     background-size: cover;
 }
 
+table, th, td {
+    border: 2px solid rgb(121, 3, 95);
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+th, td{
+    padding: 10px;
+    text-align: center;
+    width: 120px;
+}
+
+th{
+    font-weight: bold;
+}
+
+
+tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+#opções{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
 #header{
     display: flex;
     justify-content: space-between;
@@ -108,6 +139,15 @@ input:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
 }
+#finalizado{
+    display: none;
+}
+#aprovado{
+    display: none;
+}
+#negado{
+    display: none;
+}
 select{
     border:2px solid #801f61;
     border-radius: 20px;
@@ -183,10 +223,6 @@ option{
     border: 2px solid #801f61;
     border-radius: 20px;
 }
-#clientes{
-    margin-bottom: 50px;
-    margin-left: 30px;
-}
 .cadalink{
     color: rgb(190, 28, 150);
     text-decoration: none;
@@ -216,7 +252,10 @@ button:hover{
     margin-top: 50px;
 }
 #antes{
-    margin-right: 550px;
+    margin-right: 0px;
+}
+.app{
+    margin-top: 100px;
 }
 #antess{
     margin-right: 0px;
@@ -235,30 +274,31 @@ button:hover{
 @media (max-width:1100px) {
     #ro{
         width: 700px;
-        margin: 80px;
         background-color: white;
         border-radius: 5px;
     }
     #antes{
-        margin-right: 1100px;
+        margin-right: 200px;
     }
 }
 @media (max-width:700px) {
+    #opções{
+        display: block;
+        justify-content: space-around;
+    }
     #ro{
         width: 340px;
-        margin: 20px;
         background-color: white;
         border-radius: 5px;
     }
     #antes{
-        margin-right: 1600px;
+        margin-right: 800px;
     }
 }
 @media (min-width:1250px) {
     
     #ro{
         max-width: 1500px;
-        margin: 80px;
         background-color: white;
         border-radius: 5px;
     }
@@ -267,7 +307,6 @@ button:hover{
    
     #ro{
         max-width: 1500px;
-        margin: 80px;
         background-color: white;
         border-radius: 5px;
     }

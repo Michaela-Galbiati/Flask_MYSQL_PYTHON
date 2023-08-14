@@ -19,10 +19,10 @@
            <div>
                 <div style="display: flex;">
                     <a href="http://www.tamtec.com.br/"><img class="logologin" src="../static/logo.png" alt=""></a>
-                    <a href="/acessocliente"><h3 class="login">Perfil</h3></a>
+                    <a href="/acesso"><h3 class="login">Perfil</h3></a>
                 </div>
                 {% block content %}
-                    <p class="indicação"> Olá, {{nome1}}!</p>
+                    <p class="indicação"> Olá, {{nome}}!</p>
                 {% endblock %}
             </div>
             
@@ -42,7 +42,7 @@
             {% endwith %}
         </div>
         <div id="registroro">
-            <Form class="formulário" action="/adicionar_registroro" method="POST" autocomplete="of" enctype="multipart/form-data" >
+            <Form class="formulário" action="/adicionar_registroro" method="POST" autocomplete="of" >
                 <div id="cliente">
                     <h1>Solicitação de RO:</h1>
                 </div>
@@ -51,7 +51,7 @@
                         <h2>Dados do cliente</h2>
                         <div class="itens" style="display: none;">
                             <label for="nome">Vendedor</label>
-                            <input required  type="text" name="vendedor" placeholder="Vendedor"  autocomplete="off" value="{{nome1}}">
+                            <input required  type="text" name="vendedor" placeholder="Vendedor"  autocomplete="off" value="{{nome}}">
                         </div>
                         <div class="itens" style="display: none;">
                             <label for="nome">Email</label>
@@ -97,7 +97,7 @@
                             </div>
                             <div class="itens">
                                 <label for="cargo"><img class="icones" src="../static/cargo.png" alt=""></label>
-                                <input required type="text" name="cargo2"  placeholder="Cargo" autocomplete="off">
+                                <input type="text" name="cargo2"  placeholder="Cargo" autocomplete="off">
                             </div>
                             <div id="addi2">
                                 <img id="add2" src="../static/add2.png" alt="">
@@ -119,7 +119,7 @@
                             </div>
                             <div class="itens">
                                 <label for="cargo"><img class="icones" src="../static/cargo.png" alt=""></label>
-                                <input required type="text" name="cargo3"  placeholder="Cargo" autocomplete="off">
+                                <input type="text" name="cargo3"  placeholder="Cargo" autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                     </div>
                     <div class="itens" style="text-align: center;" >
                         <label for="arquivo"><img class="icones" src="../static/arquivo.png" alt=""></label>
-                        <input class="fileimg"  type="file" name="arquivoprinc" id="arquivo" placeholder="Arquivo">
+                        <input class="fileimg"  type="file" name="arquivoprinc" id="arquivo"  placeholder="Arquivo">
                     </div>
                    </div>
                     <div id="prod">
@@ -347,7 +347,7 @@
                         </div>
                         <div class="itens">
                             <label for="arquivo"><img class="icones" src="../static/arquivo.png" alt=""></label>
-                            <input class="fileimg"  type="file" name="arquivoprinc" id="arquivo" placeholder="Arquivo">
+                            <input class="fileimg"  type="file" id="arquivo" placeholder="Arquivo">
                         </div>
                         <div>
                             <button class="executaValidacao">Cadastrar</button>
@@ -392,7 +392,7 @@
                             </div>
                             <div class="itens">
                                 <label for="arquivo"><img class="icones" src="../static/arquivo.png" alt=""></label>
-                                <input class="fileimg"  type="file" name="arquivoprinc" id="arquivo" placeholder="Arquivo">
+                                <input class="fileimg"  type="file" id="arquivo" placeholder="Arquivo">
                             </div>
                         </div>
                         <div id="final">

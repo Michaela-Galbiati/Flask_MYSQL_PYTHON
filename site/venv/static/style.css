@@ -7,7 +7,7 @@ body{
     padding: 0px;
     margin:0px;
     overflow-X: hidden;
-    background-image: url(../static/Fundo2.png);
+    background-image: linear-gradient( #ffffff,  rgb(243, 240, 248));
     font-family: 'titulo',sans-serif;
     background-repeat: no-repeat;
     background-attachment: fixed;

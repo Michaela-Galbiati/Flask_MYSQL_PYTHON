@@ -29,111 +29,123 @@
             
         </div> 
          <p style="color:black; background-color: blue;">{{msg}}</p>
-            <div id="clientes">
+            <div id="clientes"  class="app">
                 <div id="ro">
                     <h1 id="cliente">Registros de Cliente</h1>
                     <div >
                         <img id="menu" src="../static/sinal-de-seta-para-baixo-para-navegar.png" alt="">
                         <DIV style="display: none;" id="menuabrir">
-                            <div>
-                                <a href="/cliente"><h3 class="login">Todos</h3></a>
-                            </div>
-                            <div>
-                                <a href="/recusado"><h3 class="login">Recusado/Negado</h3></a>
-                            </div>
-                            
-                            <div>
-                                <a href="/aprovado"><h3 class="login">Aprovado</h3></a>
-                            </div>
-                            <div>
-                                <a href="/finalizado"><h3 class="login">Finalizado</h3></a>
+                            <div id="opções">
+                                <div>
+                                    <a href="/site_cliente"><h3 class="login">Todos</h3></a>
+                                </div> 
+                                <div>
+                                    <a href="/recusado"><h3 class="login">Recusado/Negado</h3></a>
+                                </div>
+                                
+                                <div>
+                                    <a href="/aprovado"><h3 class="login">Aprovado</h3></a>
+                                </div>
+                                <div>
+                                    <a href="/finalizado"><h3 class="login">Finalizado</h3></a>
+                                </div>
                             </div>
                         </DIV>
                     </div>
 
-                  
                     <div id="partes" class="draggable">
-                        <div  id="antes" ></div>
-                        <div class="p0" id="p1">
-                            <h5 class="title">Solicitação</h5>
-                            {% for cadastroro in cadastroros %}
-                                <a class="cadalink" href="/edit/{{cadastroro.22}}"><p> {{cadastroro.22}}</p></a>
-                            {% endfor %}
-                        </div>
-                        <div class="p0">
-                            <h5 class="title">Orgão</h5>
-                            {% for cadastroro in cadastroros %}
-                                <a class="cadalink" href="/edit/{{cadastroro.22}}"><p> {{cadastroro.10}}</p> </a>
-                            {% endfor %}
-                        </div>
-                        <div class="p0">
-                            <h5 class="title">Vendedor</h5>
-                            {% for cadastroro in cadastroros %}
-                                <p> {{cadastroro.23}}</p>
-                            {% endfor %}
-                        </div>
-                        <div>
-                            <h5 class="title">N.P</h5>
-                            {% for cadastroro in cadastroros %}
-                                <a class="cadalink" href="/edit/{{cadastroro.22}}"><p> {{cadastroro.11}}</p></a>
-                            {% endfor %}
-                        </div>
-                        <div>
-                            <div>
-                                <h5 class="title">Status</h5>
-                                {% for cadastroro in cadastroros %}
-                                    <p class="status">{{cadastroro.21}}</p>   
-                                {% endfor %}
-                            </div>
-    
-                        </div>
-                        <div>
-                            <div style="width: 100%;">
-                                <h5 class="title">Finalizado</h5>
-                                {% for cadastroro in cadastroros %}
-                                    <p class="status">{{cadastroro.33}}</p>   
-                                {% endfor %}
-                            </div>
-    
-                        </div>
-                        <div>
-                            <h5 class="title">Responsável</h5>
-                            {% for cadastroro in cadastroros %}
-                                <p> {{cadastroro.24}}</p>
-                            {% endfor %}
-                        </div>
-                        <div>
-                            <h5 class="title">Data</h5>
-                            {% for cadastroro in cadastroros %}
-                                <p> {{cadastroro.25}}</p>
-                            {% endfor %}
-                        </div>
-                        <div>
-                            <h5 class="title">RO</h5>
-                            {% for cadastroro in cadastroros %}
-                                <p> {{cadastroro.25}}</p>
-                            {% endfor %}
-                        </div>
-                        <div>
-                            <h5 class="title">Etapas</h5>
-                            {% for cadastroro in cadastroros %}
-                                <div><a class="link" href="/edit/{{cadastroro.22}}">Editar</a></div>
-                                <div style="margin-top: 10px; margin-bottom: 20px;"></div>
-                                <div style="display: none;"><a href="/delete/{{cadastroro.22}}">Deletar</a></div>      
-                            {% endfor %}
-                        </div>
-                        <div>
-                            <h5 class="title">Documento</h5>
-                            {% for cadastroro in cadastroros %}
-                                <div><a class="link" href="/pdf/{{cadastroro.22}}">Arquivo</a></div>
-                                <div style="margin-top: 10px; margin-bottom: 20px;"></div>
-                                <div style="display: none;"><a href="/delete/{{cadastroro.22}}">Deletar</a></div>      
-                            {% endfor %}
-                        </div>
+                        <div id="antes"></div>
+                        <table border="1">
+                            <tr>
+                                <td>Solicitação</td>
+                                <td>Orgão</td>
+                                <td>Vendedor</td>
+                                <td>Nome do projeto</td>
+                                <td>Status</td>
+                                <td>Finalizado</td>
+                                <td>Responsável</td>
+                                <td>Data</td>
+                                <td>RO</td>
+                                <td>Retorno</td>
+                                <td>Etapas</td>
+                                <td>Documento</td>
+                    
+                    
+                    
+                            </tr>
+                            <tr>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <a class="cadalink" href="/edit/{{cadastroro.22}}"><p> {{cadastroro.22}}</p></a>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <a class="cadalink" href="/edit/{{cadastroro.22}}"><p> {{cadastroro.10}}</p> </a>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <p> {{cadastroro.23}}</p>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <a class="cadalink" href="/edit/{{cadastroro.22}}"><p> {{cadastroro.11}}</p></a>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <p class="status">{{cadastroro.21}}</p>   
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <p class="status">{{cadastroro.33}}</p>   
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <p class="status">{{cadastroro.24}}</p>   
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                    <a href="/edit/{{cadastroro.22}}"><p class="status">{{cadastroro.25}}</p></a>   
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <p class="status">{{cadastroro.26}}</p>   
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <p class="status">{{cadastroro.94}}</p>   
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <div><a class="link" href="/edit/{{cadastroro.22}}">Editar</a></div>
+                                        <div style="margin-top: 10px; margin-bottom: 20px;"></div>
+                                        <div style="display: none;"><a href="/delete/{{cadastroro.22}}">Deletar</a></div>      
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastroro in cadastroros %}
+                                        <div><a class="link" href="/pdf/{{cadastroro.22}}">Arquivo</a></div>
+                                        <div style="margin-top: 10px; margin-bottom: 20px;"></div>
+                                        <div style="display: none;"><a href="/delete/{{cadastroro.22}}">Deletar</a></div>      
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div>
+             <div style="margin-top: 80px; text-align: center; margin-bottom: 40px;">
+                <img style="max-width: 400px; text-align: center;" src="../static/logotipo.png" alt="">
+            </div>
     </div>
     <div>
         <!--

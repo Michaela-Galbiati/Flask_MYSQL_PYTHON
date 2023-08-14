@@ -107,7 +107,7 @@ input:focus {
 }
 #minhaconta{
     background-color: white;
-    width: 450px;
+    max-width: 450px;
     text-align: center;
     margin: 0 auto;
     padding: 20px;
@@ -135,6 +135,6 @@ button:hover{
 }
 @media (max-width:700px) {
     h1{
-        font-size: 1em;
+        font-size: 1.2em;
     }
 }

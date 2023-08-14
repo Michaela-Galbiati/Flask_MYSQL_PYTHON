@@ -79,7 +79,7 @@ input:focus {
 }
 #minhaconta{
     height: 500px;
-    width: 700px;
+    max-width: 700px;
     text-align: center;
     background-color: white;
     text-align: center;

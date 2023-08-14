@@ -13,8 +13,7 @@
     <div style="display: flex; justify-content: space-between; margin: 10px;">
         <a href="http://www.tamtec.com.br/"><img class="logologin" src="../static/logo.png" alt=""></a>
         
-        <a href="acesso"><h3 class="login">RO</h3></a>
-    
+        <a href="acesso"><h3 class="login">Clientes</h3></a>
     </div>
     <div>
         {% with messages = get_flashed_messages()%}
@@ -136,7 +135,7 @@
                 <form action="/upload" method="POST">
                     <div class="itens">
                         <label for="arquivo"><img class="icones" src="../static/arquivo.png" alt=""></label>
-                        <input disabled=""  class="block" class="fileimg"  type="file" name="arquivoprinc" id="arquivo" placeholder="Arquivo">
+                        <input disabled=""  class="block" class="fileimg"  type="file" name="arquivoprinc" id="arquivo" placeholder="Arquivo" value="{{cadastroro.98}}">
                     </div>
                 </form>
             </div>

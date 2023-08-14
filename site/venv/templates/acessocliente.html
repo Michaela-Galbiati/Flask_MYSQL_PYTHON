@@ -5,83 +5,134 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../static/styleacesso.css">
+    <link rel="stylesheet" href="../static/stylecliente.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="../static/jquery-3.7.0.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-    <title>Usuário</title>
+    <title>Tamtec</title>
 </head>
 <body>
     <div>
-        <div id="header">
+        <div id="header" style="display: flex; justify-content: space-between; margin: 10px;">
             <div>
-                <a href="http://www.tamtec.com.br/"><img class="logo" src="../static/logo.png" alt=""></a>
+                <div style="display: flex;">
+                    <a href="http://www.tamtec.com.br/"><img class="logo" src="../static/logo.png" alt=""></a>
+                    <a href="/acesso"><h3 class="login">Perfil</h3></a>
+                </div>
+                {% block content %}
+                    <p class="indicação"> Olá, {{nome}}!</p>
+                {% endblock %}
             </div>
-            <div class="menu">
-                <h1><a class="registro" href="registroro">Registro de clientes</a></h1>
+            
+            <div>
+                <a href="/logouttt"><h3 class="login">Logout</h3></a>
             </div>
-
-        </div>
-        <div id="minhaconta">
-            <h2>
-                Minha conta
-            </h2>
-        <form action="updatedadoscliente" method="POST" autocomplete="off">
-            <div id="dados">
-                    <br><input type="text" name="nome1"  placeholder="Nome completo" value="{{nome1}}">
-                    <br><input type="tel" name="telefone1"  placeholder="Telefone" onkeypress="$(this).mask('(00) 0000-00009')" maxlength="15" id="telefone" value="{{telefone1}}">
-                    <br><input type="email" name="email"placeholder="Email" value="{{email}}">
-                    <div class="caixa">
-                        <div class="senhaslayout">
-                            <input style="margin-left: 50px;"  type="password" name="senha" id="password" placeholder="Senha" autocomplete="new-password" maxlength="14" minlength="8" title="A senha deve conter no mínimo 8 caracteres, pelo menos 1 letra maiúscula, 1 letra minúscula e 1 caracter especial. " pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$])[a-zA-Z0-9@#$]{8,50}$" value="{{senha}}">
-                            <img src="../static/abrir.png" alt="" id="showPassword" value="show">
-                        </div>
+            
+        </div> 
+         
+            <div id="clientes">
+               
+                <div id="ro">
+                    <h1 id="cliente">Registros de Cliente</h1>
+                    <div id="partes" class="draggable">
+                        <div id="antes"></div>
+                        <table border="1">
+                            <tr>
+                                <td>Id</td>
+                                <td>Nome</td>
+                                <td>Telefone</td>
+                                <td>Email</td>
+                                <td>Senha</td>
+                                <td>Setor</td>
+                                <td>Editar</td>
+                                <td>Deletar</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {% for cadastro in cadastros %}
+                                        <a class="cadalink" href="/editcad/{{cadastro.5}}"><p> {{cadastro.5}}</p></a>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastro in cadastros %}
+                                        <a class="cadalink" href="/editcad/{{cadastro.5}}"><p> {{cadastro.0}}</p> </a>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastro in cadastros %}
+                                        <p> {{cadastro.1}}</p>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastro in cadastros %}
+                                        <a class="cadalink" href="/editcad/{{cadastro.5}}"><p> {{cadastro.2}}</p></a>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastro in cadastros %}
+                                        <p class="status">{{cadastro.3}}</p>   
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastro in cadastros %}
+                                        <p class="status">{{cadastro.4}}</p>   
+                                    {% endfor %}
+                                </td>
+                                
+                                <td>
+                                    {% for cadastro in cadastros %}
+                                        <div>
+                                            <a class="cadalink" href="/editcad/{{cadastro.5}}"><p> Editar</p></a>
+                                        </div>    
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for cadastro in cadastros %}
+                                       
+                                        <div>
+                                            <a href="/deletecad/{{cadastro.5}}"><p> Deletar</p></a>
+                                        </div>      
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <button type="submit">Alterar dados</button>
-        </form>
-        <form action="deleteacesso" method="POST">
-            <div style="margin: 0 auto; text-align: center; margin-top: 100px">
-                <button style="background-color:rgb(255, 255, 255); color: #801f61;">Deletar</button>
+            <div style="margin-top: 80px; text-align: center; margin-bottom: 40px;">
+                <img style="max-width: 400px; text-align: center;" src="../static/logotipo.png" alt="">
             </div>
-        </form>
-        
-        </div>
     </div>
-<script>
-    $(document).ready(function(){
- 
-        // Click event of the showPassword button
-        $('#showPassword').on('click', function(){
-           
-          // Get the password field
-          var passwordField = $('#password');
-       
-          // Get the current type of the password field will be password or text
-          var passwordFieldType = passwordField.attr('type');
-       
-          // Check to see if the type is a password field
-          if(passwordFieldType == 'password')
-          {
-              // Change the password field to text
-              passwordField.attr('type', 'text');
-       
-              // Change the Text on the show password button to Hide
-              $(this).val('Hide');
-              $(this).attr('src','../static/abrir.png')
+    
 
-          } else {
-              // If the password field type is not a password field then set it to password
-              passwordField.attr('type', 'password');
-       
-              // Change the value of the show password button to Show
-              $(this).val('Show');
-              $(this).attr('src','../static/fechar.png')
-          }
+    <script>
+        $("#menu").click(function(){
+            $("#menuabrir").slideToggle()
+
         });
-      });
-</script>
+
+
+
+
+        $(document).ready(function() {
+
+            $("#partes").owlCarousel({
+          
+                navigation : true, // Show next and prev buttons
+                slideSpeed : 300,
+                paginationSpeed : 400,
+                singleItem:true
+          
+                // "singleItem:true" is a shortcut for:
+                // items : 1, 
+                // itemsDesktop : false,
+                // itemsDesktopSmall : false,
+                // itemsTablet: false,
+                // itemsMobile : false
+          
+            });
+          
+          });
+    </script>
 </body>
 </html>
